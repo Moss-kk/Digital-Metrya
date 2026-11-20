@@ -1,0 +1,73 @@
+/* ============================================================
+   Digital Metrya — Shared Brand CSS Tokens
+   Source: docs/01-brand-system.md
+   
+   Import this in every page:
+   <link rel="stylesheet" href="/src/styles/tokens.css">
+============================================================ */
+
+:root {
+  /* ── Core Brand Colors ── */
+  --purple-600:    #6D28D9;   /* Primary — buttons, links, accents */
+  --purple-500:    #7C3AED;
+  --purple-400:    #A78BFA;   /* Secondary — hover, gradient end */
+  --lavender-100:  #EDE9FE;   /* Accent — section backgrounds, cards */
+  --lavender-50:   #F5F3FF;
+  --navy-900:      #24104F;   /* Deep — headings, dark sections, footer */
+  --white:         #FFFFFF;
+
+  /* ── Gradient ── */
+  --gradient-brand: linear-gradient(135deg, var(--purple-600) 0%, var(--navy-900) 100%);
+  --gradient-hero:  linear-gradient(135deg, var(--purple-600) 0%, var(--purple-400) 100%);
+
+  /* ── Wedding Occasion Accents (inside phone frames only) ── */
+  --gold:          #C9A84C;
+  --gold-light:    #F0DFA0;
+  --ivory:         #FDF8F0;
+
+  /* ── Typography ── */
+  --font-head:    'Poppins', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-am:      'Noto Sans Ethiopic', sans-serif;
+
+  /* ── Type Scale (desktop) ── */
+  --text-h1:   48px;  --lh-h1:   56px;
+  --text-h2:   32px;  --lh-h2:   40px;
+  --text-h3:   24px;  --lh-h3:   32px;
+  --text-body: 16px;  --lh-body: 24px;
+  --text-cap:  14px;  --lh-cap:  20px;
+  --text-btn:  16px;
+
+  /* ── Layout ── */
+  --margin-desktop: 60px;
+  --margin-mobile:  32px;
+  --gutter-desktop: 20px;
+  --gutter-mobile:  16px;
+  --max-width:      1200px;
+  --content-width:  960px;
+
+  /* ── Radii ── */
+  --radius-btn:   999px;
+  --radius-card:  20px;
+  --radius-sm:    12px;
+  --radius-chip:  8px;
+
+  /* ── Shadows ── */
+  --shadow-card:     0 8px 24px rgba(36,16,79,.08);
+  --shadow-elevated: 0 16px 40px rgba(36,16,79,.14);
+  --shadow-btn:      0 4px 12px rgba(109,40,217,.3);
+
+  /* ── Motion ── */
+  --duration-fast:   200ms;
+  --duration-base:   400ms;
+  --duration-slow:   600ms;
+  --ease-out:        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mobile overrides (H1→36/44, H2→28/36) */
+@media (max-width: 768px) {
+  :root {
+    --text-h1:  36px; --lh-h1:  44px;
+    --text-h2:  28px; --lh-h2:  36px;
+  }
+}

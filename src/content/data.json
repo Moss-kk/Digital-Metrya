@@ -1,0 +1,148 @@
+{
+  "occasions": [
+    {
+      "id": "wedding",
+      "label": "Weddings",
+      "emoji": "💍",
+      "color": "#C9A84C",
+      "bg": "linear-gradient(160deg,#FDF8F0,#EDE9FE)",
+      "desc": "Love, joy, togetherness — with your story, schedule, map and RSVP."
+    },
+    {
+      "id": "birthday",
+      "label": "Birthdays",
+      "emoji": "🎂",
+      "color": "#E07B39",
+      "bg": "linear-gradient(160deg,#FFF8F0,#FDE7D3)",
+      "desc": "Celebration, happiness, fun — party details everyone can find."
+    },
+    {
+      "id": "graduation",
+      "label": "Graduations",
+      "emoji": "🎓",
+      "color": "#1E3A8A",
+      "bg": "linear-gradient(160deg,#F0F4FF,#E0E7FF)",
+      "desc": "Achievement, pride, future — share the day with those who helped you get here."
+    },
+    {
+      "id": "baby-shower",
+      "label": "Baby Showers",
+      "emoji": "👶",
+      "color": "#16A34A",
+      "bg": "linear-gradient(160deg,#F0FDF4,#DCFCE7)",
+      "desc": "A gentle welcome for your little one, with all the details in one place."
+    },
+    {
+      "id": "book-release",
+      "label": "Book Releases",
+      "emoji": "📖",
+      "color": "#1C1917",
+      "bg": "linear-gradient(160deg,#FAFAF9,#F5F5F4)",
+      "desc": "Launch your book with a page as thoughtful as your writing."
+    },
+    {
+      "id": "custom",
+      "label": "Custom",
+      "emoji": "✨",
+      "color": "#6D28D9",
+      "bg": "linear-gradient(160deg,#EDE9FE,#F3E8FF)",
+      "desc": "Family gatherings, company events, anniversaries. Tell us what you need."
+    }
+  ],
+  "packages": [
+    {
+      "id": "simple",
+      "tier": "Package 01",
+      "name": "Simple",
+      "price": "From ETB 1,500",
+      "turnaround": "3 days",
+      "for": "Birthdays, small events",
+      "featured": false,
+      "features": [
+        "1-page custom invitation design",
+        "Event details: date, time, venue",
+        "Google Maps integration",
+        "Short link (digitalmetrya.com/you)",
+        "QR code — PNG & SVG",
+        "Works on every phone",
+        "1 revision round",
+        "Delivered in 3 days"
+      ]
+    },
+    {
+      "id": "signature",
+      "tier": "Package 02",
+      "name": "Signature",
+      "price": "From ETB 3,500",
+      "turnaround": "5 days",
+      "for": "Weddings, graduations",
+      "featured": true,
+      "features": [
+        "Everything in Simple",
+        "Multi-section: cover, story, gallery",
+        "Photo gallery (up to 20 photos)",
+        "Love story / About the couple",
+        "Wedding countdown timer",
+        "RSVP form with guest responses",
+        "Background music player",
+        "2 revision rounds",
+        "English & Amharic option",
+        "Delivered in 5 days"
+      ]
+    },
+    {
+      "id": "custom",
+      "tier": "Package 03",
+      "name": "Custom",
+      "price": "Contact us",
+      "turnaround": "Agreed",
+      "for": "Any occasion, any scale",
+      "featured": false,
+      "features": [
+        "Everything in Signature",
+        "Fully custom multi-page design",
+        "Guest list management",
+        "Digital table seating",
+        "Custom animations & effects",
+        "Printed QR cards (optional)",
+        "Priority support on Telegram",
+        "Unlimited revisions",
+        "12-month hosting"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "What is a digital invitation?",
+      "a": "A digital invitation is a beautiful web page designed specifically for your event. Guests open it by tapping a link or scanning a QR code — no app download needed. It includes all event details, photos, map, countdown, and RSVP."
+    },
+    {
+      "q": "Do my guests need to install anything?",
+      "a": "No. The invitation opens directly in any web browser. Android, iPhone, old phones — it works on all of them. Just tap the link."
+    },
+    {
+      "q": "How long does it take?",
+      "a": "The Simple package is ready in 3 days after you send us your details. Signature is 5 days. Custom timelines we agree together. Rush delivery is available — ask us on Telegram."
+    },
+    {
+      "q": "Can I change details after it goes live?",
+      "a": "Yes! One of the biggest advantages over printed cards. If your venue changes, the time shifts, or you want to add information — we update the page and all existing links automatically show the new details."
+    },
+    {
+      "q": "Can you do Amharic and Ethiopian calendar dates?",
+      "a": "Absolutely. We support bilingual (English + Amharic) invitations with the Ethiopian calendar date displayed alongside the Gregorian date."
+    },
+    {
+      "q": "What about guests who don't use smartphones?",
+      "a": "We give you a print-ready QR code you can put on a physical card. Older relatives still receive a beautiful printed card, and the QR takes them to the full digital invitation. You can also share the link by SMS."
+    },
+    {
+      "q": "How do I pay?",
+      "a": "We accept Telebirr, CBE Birr, and bank transfer. Payment details are shared once we confirm your order. No payment is required upfront — we confirm all details first."
+    },
+    {
+      "q": "How long does the link stay live?",
+      "a": "Simple: 6 months. Signature: 12 months. Custom: 12+ months. Extensions available."
+    }
+  ]
+}

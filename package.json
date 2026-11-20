@@ -1,0 +1,13 @@
+{
+  "name": "digital-metrya",
+  "version": "1.0.0",
+  "description": "Digital Metrya — Your Event. Our Digital Touch. Digital invitation platform for Ethiopia.",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": ["digital-invitation", "ethiopia", "wedding", "birthday"],
+  "author": "Digital Metrya",
+  "license": "MIT",
+  "dependencies": {}
+}

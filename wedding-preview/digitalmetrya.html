@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Digital Invitations in Ethiopia | Digital Metrya</title>
+  <meta name="description" content="Beautiful digital invitations for weddings, birthdays, graduations and more. One link, one QR code. Order from Digital Metrya."/>
+  <meta property="og:title" content="Digital Invitations in Ethiopia | Digital Metrya"/>
+  <meta property="og:description" content="Beautiful digital invitations for weddings, birthdays, graduations and more. One link, one QR code."/>
+  <meta property="og:image" content="/public/brand/logo.png"/>
+  <meta property="og:url" content="https://digitalmetrya.com"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="icon" href="/public/brand/logo.png" type="image/png"/>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+Ethiopic:wght@400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet"/>
+
+  <style>
+/* ============================================================
+   BRAND TOKENS — docs/01-brand-system.md
+============================================================ */
+:root{
+  --p6:#6D28D9;--p5:#7C3AED;--p4:#A78BFA;
+  --l1:#EDE9FE;--l0:#F5F3FF;
+  --n9:#24104F;
+  --wh:#FFFFFF;
+  --gold:#C9A84C;--gold-lt:#F0DFA0;--ivory:#FDF8F0;
+  --sh-card:0 8px 24px rgba(36,16,79,.08);
+  --sh-elev:0 20px 48px rgba(36,16,79,.14);
+  --r-btn:999px;--r-card:20px;--r-sm:12px;
+  --fh:'Poppins',sans-serif;
+  --fb:'Inter',sans-serif;
+  --fa:'Noto Sans Ethiopic',sans-serif;
+}
+
+/* RESET */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--fb);background:var(--wh);color:var(--n9);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font:inherit}
+
+/* SCROLL PROGRESS */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--p6),var(--p4));z-index:9999;transition:width .08s linear}
+
+/* ============================================================
+   HEADER — horizontal logo on white, 60px side margins
+============================================================ */
+header{
+  position:fixed;top:3px;left:0;right:0;z-index:200;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(109,40,217,.09);
+  padding:0 60px;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-svg{flex-shrink:0}
+.logo-copy{display:flex;flex-direction:column;line-height:1.2}
+.logo-name{font-family:var(--fh);font-weight:700;font-size:16px;color:var(--n9)}
+.logo-tag{font-size:10px;color:var(--p6);letter-spacing:.05em}
+
+/* NAV */
+nav{display:flex;align-items:center;gap:28px}
+.nav-link{font-size:14px;font-weight:500;color:var(--n9);transition:color .2s}
+.nav-link:hover{color:var(--p6)}
+.nav-link.active{color:var(--p6)}
+.btn-nav{
+  background:var(--p6);color:#fff;
+  padding:10px 22px;border-radius:var(--r-btn);
+  font-family:var(--fh);font-size:14px;font-weight:600;
+  display:inline-flex;align-items:center;gap:7px;
+  transition:background .2s,transform .2s,box-shadow .2s;
+}
+.btn-nav:hover{background:var(--n9);transform:translateY(-1px);box-shadow:0 6px 16px rgba(109,40,217,.3)}
+.ham{display:none;flex-direction:column;gap:5px;padding:4px}
+.ham span{display:block;width:22px;height:2px;background:var(--n9);border-radius:2px;transition:all .3s}
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Mobile nav drawer */
+.mob-nav{
+  display:none;position:fixed;top:71px;left:0;right:0;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(109,40,217,.1);
+  padding:20px 32px 28px;z-index:199;
+  flex-direction:column;gap:4px;
+}
+.mob-nav.open{display:flex}
+.mob-link{
+  padding:12px 0;font-size:16px;font-weight:500;
+  color:var(--n9);border-bottom:1px solid rgba(109,40,217,.07);
+  transition:color .2s;
+}
+.mob-link:hover{color:var(--p6)}
+.btn-mob-order{
+  margin-top:12px;background:var(--p6);color:#fff;
+  padding:14px;border-radius:var(--r-btn);text-align:center;
+  font-family:var(--fh);font-size:15px;font-weight:600;
+}
+
+/* ============================================================
+   HERO — left text 6 cols / right phone composition 6 cols
+   White bg + lavender rounded shape, faint feather pattern
+============================================================ */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:88px 60px 60px;background:var(--wh);
+  position:relative;overflow:hidden;
+}
+/* Lavender shape behind phones — no blob, clean circle */
+.hero::after{
+  content:'';position:absolute;right:-80px;top:50%;
+  width:560px;height:560px;border-radius:50%;
+  background:var(--l1);opacity:.55;
+  transform:translateY(-50%);pointer-events:none;
+  z-index:0;
+}
+/* Feather pattern — very low opacity (4-6%) */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 10 C80 10 100 30 90 50 L70 80 L60 100 L50 80 L30 50 C20 30 40 10 60 10 Z' fill='none' stroke='%236D28D9' stroke-width='0.6' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+.hero-left{flex:1;max-width:560px;position:relative;z-index:1;padding-right:40px}
+.hero-right{flex:1;display:flex;justify-content:center;align-items:center;position:relative;z-index:1}
+
+/* Eyebrow chip */
+.chip{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--l1);color:var(--p6);
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:7px 14px;border-radius:var(--r-btn);margin-bottom:20px;
+  border:1px solid rgba(109,40,217,.12);
+}
+.chip-dot{width:6px;height:6px;background:var(--p6);border-radius:50%;animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* H1 — type does the work */
+.h1{
+  font-family:var(--fh);font-size:clamp(40px,5vw,60px);
+  font-weight:700;color:var(--n9);line-height:1.12;margin-bottom:16px;
+}
+.h1 .accent{color:var(--p6)}
+
+.hero-sub{
+  font-size:17px;color:rgba(36,16,79,.65);line-height:1.75;
+  max-width:460px;margin-bottom:36px;
+}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.btn-primary{
+  background:var(--p6);color:#fff;
+  padding:14px 28px;border-radius:var(--r-btn);
+  font-family:var(--fh);font-size:15px;font-weight:600;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all .25s;border:2px solid var(--p6);
+}
+.btn-primary:hover{background:var(--n9);border-color:var(--n9);transform:translateY(-2px);box-shadow:var(--sh-elev)}
+.btn-ghost{
+  border:2px solid rgba(36,16,79,.2);color:var(--n9);
+  padding:12px 24px;border-radius:var(--r-btn);
+  font-family:var(--fh);font-size:15px;font-weight:600;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all .25s;
+}
+.btn-ghost:hover{border-color:var(--p6);color:var(--p6)}
+
+/* Reassurance line */
+.reassurance{
+  display:flex;gap:20px;flex-wrap:wrap;
+  font-size:13px;color:rgba(36,16,79,.5);
+}
+.reassurance-item{display:flex;align-items:center;gap:5px}
+.reassurance-item svg{color:var(--p6)}
+
+/* ---- Phone Frame ---- */
+.phone-wrap{position:relative}
+.phone{
+  width:230px;border-radius:40px;
+  background:var(--n9);padding:14px 12px;
+  box-shadow:0 36px 80px rgba(36,16,79,.35),0 0 0 1px rgba(255,255,255,.08) inset;
+  position:relative;z-index:2;
+  animation:float 6s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.phone-notch{
+  width:72px;height:22px;background:var(--n9);
+  border-radius:0 0 16px 16px;margin:0 auto 10px;
+  position:relative;
+}
+.phone-notch::before{
+  content:'';position:absolute;top:7px;left:50%;transform:translateX(-50%);
+  width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.12);
+}
+.phone-screen{
+  border-radius:28px;overflow:hidden;
+  background:linear-gradient(160deg,var(--ivory) 0%,var(--l1) 100%);
+  min-height:400px;padding:22px 16px;
+}
+/* Invite inside phone */
+.inv-eyebrow{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:12px}
+.inv-divider{width:40px;height:1px;background:var(--gold-lt);margin:10px auto}
+.inv-names{font-family:var(--fh);font-weight:700;font-size:20px;color:var(--n9);text-align:center;line-height:1.15}
+.inv-amp{font-size:13px;color:var(--p4);display:block}
+.inv-date{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--n9);text-align:center;margin-top:10px}
+.inv-loc{font-size:8px;color:rgba(36,16,79,.5);text-align:center;margin-top:3px}
+.inv-cd{display:flex;justify-content:center;gap:5px;margin:14px 0}
+.cd-u{background:var(--n9);border-radius:7px;padding:5px 7px;text-align:center;min-width:34px}
+.cd-n{font-size:14px;font-weight:700;color:#fff}
+.cd-l{font-size:6px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em}
+.inv-rsvp{
+  display:block;text-align:center;
+  background:var(--p6);color:#fff;border-radius:999px;
+  padding:8px 16px;font-size:10px;font-weight:700;margin:12px auto;width:fit-content;
+}
+.inv-map{
+  background:var(--l1);border-radius:10px;height:52px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:var(--p6);font-weight:600;gap:5px;
+  margin-top:12px;
+}
+
+/* Second phone (behind, rotated) */
+.phone-sm{
+  width:170px;border-radius:30px;
+  background:var(--n9);padding:10px;
+  box-shadow:0 24px 56px rgba(36,16,79,.25);
+  position:absolute;right:-55px;bottom:10px;
+  transform:rotate(7deg);z-index:1;
+  animation:float-sm 7s ease-in-out infinite;
+}
+@keyframes float-sm{0%,100%{transform:rotate(7deg) translateY(0)}50%{transform:rotate(7deg) translateY(-8px)}}
+.phone-screen-sm{
+  border-radius:20px;min-height:270px;
+  background:linear-gradient(160deg,#FFF8F0,#FDE7D3);
+  padding:14px 10px;text-align:center;overflow:hidden;
+}
+
+/* QR Card — real scannable visual */
+.qr-card{
+  position:absolute;left:-60px;bottom:70px;z-index:3;
+  background:var(--wh);border-radius:16px;padding:14px;
+  box-shadow:var(--sh-elev);width:150px;
+  border:1px solid rgba(109,40,217,.1);
+  animation:float-qr 5s ease-in-out infinite;
+}
+@keyframes float-qr{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.qr-title{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(36,16,79,.4);text-align:center;margin-bottom:8px}
+.qr-visual{display:grid;grid-template-columns:repeat(7,1fr);gap:1.5px;margin-bottom:8px}
+.qr-cell{width:100%;aspect-ratio:1;border-radius:1px}
+.qr-link{font-size:8px;color:var(--p6);font-weight:600;text-align:center;line-height:1.4}
+
+/* Link chip floating */
+.link-chip{
+  position:absolute;top:30px;right:-50px;z-index:3;
+  background:var(--wh);border:1px solid rgba(109,40,217,.12);
+  border-radius:var(--r-btn);padding:8px 14px;
+  display:flex;align-items:center;gap:7px;
+  box-shadow:var(--sh-card);font-size:11px;font-weight:600;color:var(--p6);
+  animation:float-chip 4s ease-in-out infinite;
+}
+@keyframes float-chip{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.link-chip-dot{width:8px;height:8px;border-radius:50%;background:#22C55E}
+
+/* ============================================================
+   SECTION SHARED STYLES
+============================================================ */
+.section-eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--p6);margin-bottom:12px;
+}
+.section-h2{
+  font-family:var(--fh);font-size:clamp(28px,3.5vw,40px);font-weight:700;
+  color:var(--n9);margin-bottom:16px;line-height:1.2;
+}
+.section-sub{font-size:16px;color:rgba(36,16,79,.65);line-height:1.75;max-width:580px}
+.text-center{text-align:center}
+.text-center .section-sub{margin-left:auto;margin-right:auto}
+
+/* Container */
+.container{max-width:1200px;margin:0 auto;padding:0 60px}
+@media(max-width:768px){.container{padding:0 24px}}
+
+/* Fade-in animation */
+.fi{opacity:0;transform:translateY(18px);transition:opacity .55s var(--ease-out,ease),transform .55s var(--ease-out,ease)}
+.fi.vis{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.fi,.phone,.phone-sm,.qr-card,.link-chip{transition:none;animation:none;opacity:1;transform:none}}
+
+/* ============================================================
+   3-STEP STRIP — white, horizontal
+   "One link. One QR code. Every guest."
+============================================================ */
+.strip{padding:80px 0;background:var(--wh);border-top:1px solid rgba(109,40,217,.07)}
+.strip-h2{margin-bottom:52px}
+.strip-h2 em{font-style:normal;color:var(--p6)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:900px;margin:0 auto;position:relative}
+.steps::before{
+  content:'';position:absolute;top:26px;left:calc(100%/6);right:calc(100%/6);
+  height:1px;background:linear-gradient(90deg,transparent,var(--l1) 20%,var(--l1) 80%,transparent);
+}
+.step-item{text-align:center;padding:0 24px}
+.step-num{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--l1);color:var(--p6);
+  font-family:var(--fh);font-size:20px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;position:relative;z-index:1;
+  border:3px solid var(--wh);box-shadow:0 0 0 1px var(--l1);
+}
+.step-title{font-family:var(--fh);font-size:17px;font-weight:700;color:var(--n9);margin-bottom:10px}
+.step-desc{font-size:14px;color:rgba(36,16,79,.6);line-height:1.65}
+
+/* ============================================================
+   OCCASIONS TABS — lavender bg, large demo, varied layout
+============================================================ */
+.occasions{padding:88px 0;background:var(--l0)}
+.tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:48px}
+.tab{
+  padding:9px 18px;border-radius:var(--r-btn);font-size:13px;font-weight:600;
+  border:1.5px solid rgba(109,40,217,.18);color:var(--n9);cursor:pointer;
+  background:var(--wh);transition:all .2s;user-select:none;
+}
+.tab.active{background:var(--p6);color:#fff;border-color:var(--p6)}
+.tab:hover:not(.active){border-color:var(--p6);color:var(--p6)}
+.occ-panel{display:none;grid-template-columns:1fr 1fr;gap:56px;align-items:center;max-width:880px;margin:0 auto}
+.occ-panel.active{display:grid}
+.occ-phone-wrap{display:flex;justify-content:center}
+.occ-ph{
+  width:210px;border-radius:36px;background:var(--n9);
+  padding:12px;box-shadow:0 28px 64px rgba(36,16,79,.28);
+}
+.occ-scr{border-radius:24px;min-height:360px;padding:18px 14px;text-align:center;overflow:hidden}
+.occ-title{font-family:var(--fh);font-size:28px;font-weight:700;color:var(--n9);margin-bottom:14px;line-height:1.2}
+.occ-desc{font-size:15px;color:rgba(36,16,79,.65);line-height:1.75;margin-bottom:28px}
+.btn-sample{
+  display:inline-flex;align-items:center;gap:8px;
+  border:2px solid var(--p6);color:var(--p6);
+  padding:11px 22px;border-radius:var(--r-btn);font-size:14px;font-weight:600;
+  transition:all .2s;
+}
+.btn-sample:hover{background:var(--p6);color:#fff}
+
+/* ============================================================
+   PAPER VS DIGITAL — white, split layout
+============================================================ */
+.compare{padding:88px 0;background:var(--wh)}
+.compare-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:860px;margin:48px auto 0}
+.cmp-col{border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-card);border:1px solid rgba(109,40,217,.07)}
+.cmp-head{padding:22px 28px;font-family:var(--fh);font-size:17px;font-weight:700}
+.cmp-col.old .cmp-head{background:#F5F5F4;color:rgba(36,16,79,.45)}
+.cmp-col.new .cmp-head{background:var(--n9);color:#fff}
+.cmp-body{padding:8px 0;background:var(--wh);border-top:none}
+.cmp-row{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:11px 28px;border-bottom:1px solid rgba(109,40,217,.05);
+  font-size:14px;line-height:1.5;color:rgba(36,16,79,.75);
+}
+.cmp-row:last-child{border:none}
+.cmp-icon{font-size:15px;flex-shrink:0;margin-top:1px}
+.compare-closing{text-align:center;margin-top:28px;font-size:14px;font-style:italic;color:rgba(36,16,79,.5)}
+.compare-closing strong{color:var(--p6);font-style:normal}
+
+/* ============================================================
+   BENTO — "What's inside every invitation"
+   white, mixed sizes — not 3 identical cards
+============================================================ */
+.bento{padding:88px 0;background:var(--l0)}
+.bento-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:auto auto auto;
+  gap:16px;max-width:960px;margin:48px auto 0;
+}
+.b{
+  background:var(--wh);border-radius:var(--r-card);padding:28px;
+  border:1px solid rgba(109,40,217,.08);box-shadow:var(--sh-card);
+  transition:transform .22s,box-shadow .22s;
+}
+.b:hover{transform:translateY(-3px);box-shadow:var(--sh-elev)}
+.b.w2{grid-column:span 2}
+.b.h2{grid-row:span 2}
+.b-icon{font-size:26px;margin-bottom:12px;display:block}
+.b-title{font-family:var(--fh);font-size:16px;font-weight:700;color:var(--n9);margin-bottom:7px}
+.b-desc{font-size:13px;color:rgba(36,16,79,.6);line-height:1.65}
+
+/* ============================================================
+   HOW IT WORKS — lavender, timeline
+============================================================ */
+.hiw{padding:88px 0;background:var(--l0)}
+.hiw-steps{max-width:680px;margin:52px auto 0;display:flex;flex-direction:column;gap:0}
+.hiw-step{
+  display:flex;gap:28px;padding-bottom:40px;
+  position:relative;
+}
+.hiw-step:not(:last-child)::before{
+  content:'';position:absolute;left:22px;top:52px;bottom:0;
+  width:1px;background:linear-gradient(to bottom,var(--l1),transparent);
+}
+.hiw-num{
+  flex-shrink:0;width:44px;height:44px;border-radius:50%;
+  background:var(--p6);color:#fff;
+  font-family:var(--fh);font-size:17px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:1;
+  box-shadow:0 4px 12px rgba(109,40,217,.3);
+}
+.hiw-content{}
+.hiw-title{font-family:var(--fh);font-size:19px;font-weight:700;color:var(--n9);margin-bottom:8px;margin-top:8px}
+.hiw-desc{font-size:14px;color:rgba(36,16,79,.65);line-height:1.7}
+.hiw-tag{
+  display:inline-block;margin-top:10px;
+  background:var(--l1);color:var(--p6);
+  font-size:12px;font-weight:600;padding:4px 12px;border-radius:999px;
+}
+
+/* ============================================================
+   PRICING TEASER — white
+============================================================ */
+.pricing{padding:88px 0;background:var(--wh)}
+.pkg-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  max-width:1000px;margin:52px auto 0;
+}
+.pkg{
+  border-radius:var(--r-card);border:1px solid rgba(109,40,217,.12);
+  padding:36px 28px;box-shadow:var(--sh-card);
+  display:flex;flex-direction:column;
+  transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden;
+}
+.pkg:hover{transform:translateY(-5px);box-shadow:var(--sh-elev)}
+.pkg.feat{background:var(--n9);border-color:var(--gold)}
+.pkg.feat::after{
+  content:'Most Popular';
+  position:absolute;top:22px;right:-30px;
+  background:var(--gold);color:var(--n9);
+  font-family:var(--fh);font-size:10px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:5px 38px;transform:rotate(45deg);
+}
+.pkg-tier{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--p6);margin-bottom:8px}
+.pkg.feat .pkg-tier{color:var(--gold)}
+.pkg-name{font-family:var(--fh);font-size:24px;font-weight:700;color:var(--n9);margin-bottom:4px}
+.pkg.feat .pkg-name{color:#fff}
+.pkg-price{font-family:var(--fh);font-size:32px;font-weight:700;color:var(--p6);margin-bottom:4px}
+.pkg.feat .pkg-price{color:var(--gold)}
+.pkg-for{font-size:13px;color:rgba(36,16,79,.5);margin-bottom:24px}
+.pkg.feat .pkg-for{color:rgba(255,255,255,.45)}
+.pkg-hr{border:none;border-top:1px solid rgba(109,40,217,.12);margin:0 0 20px}
+.pkg.feat .pkg-hr{border-color:rgba(201,168,76,.2)}
+.pkg-feats{display:flex;flex-direction:column;gap:11px;flex:1}
+.pkg-feat-row{display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.5;color:rgba(36,16,79,.75)}
+.pkg.feat .pkg-feat-row{color:rgba(255,255,255,.72)}
+.feat-chk{
+  width:17px;height:17px;border-radius:50%;flex-shrink:0;margin-top:1px;
+  background:var(--l1);display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:var(--p6);font-weight:700;
+}
+.pkg.feat .feat-chk{background:rgba(201,168,76,.2);color:var(--gold)}
+.pkg-btn{
+  display:block;text-align:center;margin-top:28px;
+  background:var(--n9);color:#fff;padding:13px;
+  border-radius:var(--r-btn);font-family:var(--fh);font-size:15px;font-weight:600;
+  transition:all .22s;
+}
+.pkg.feat .pkg-btn{background:var(--gold);color:var(--n9)}
+.pkg-btn:hover{background:var(--p6);color:#fff}
+.pkg.feat .pkg-btn:hover{background:var(--gold-lt)}
+
+/* ============================================================
+   TRUST / SOCIAL PROOF — white
+============================================================ */
+.trust{padding:60px 0;background:var(--wh);border-top:1px solid rgba(109,40,217,.07)}
+.trust-inner{
+  display:flex;align-items:center;justify-content:center;
+  gap:48px;flex-wrap:wrap;max-width:800px;margin:0 auto;
+}
+.trust-stat{text-align:center}
+.trust-num{font-family:var(--fh);font-size:36px;font-weight:700;color:var(--p6)}
+.trust-label{font-size:13px;color:rgba(36,16,79,.55);margin-top:4px}
+.trust-sep{width:1px;height:48px;background:rgba(109,40,217,.1)}
+
+/* ============================================================
+   FAQ — white, accordion
+============================================================ */
+.faq{padding:88px 0;background:var(--l0)}
+.faq-list{max-width:720px;margin:48px auto 0;display:flex;flex-direction:column;gap:10px}
+.faq-item{
+  background:var(--wh);border-radius:14px;overflow:hidden;
+  border:1px solid rgba(109,40,217,.09);
+}
+.faq-q{
+  padding:20px 24px;cursor:pointer;
+  font-family:var(--fh);font-size:15px;font-weight:600;color:var(--n9);
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  user-select:none;transition:color .2s;
+}
+.faq-item:hover .faq-q{color:var(--p6)}
+.faq-arr{
+  width:28px;height:28px;border-radius:50%;background:var(--l1);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:12px;color:var(--p6);transition:transform .3s;
+}
+.faq-item.open .faq-arr{transform:rotate(180deg)}
+.faq-a{
+  max-height:0;overflow:hidden;padding:0 24px;
+  font-size:14px;color:rgba(36,16,79,.65);line-height:1.75;
+  transition:max-height .35s ease,padding .3s;
+}
+.faq-item.open .faq-a{max-height:300px;padding:0 24px 20px}
+
+/* ============================================================
+   FINAL CTA BAND — brand gradient (purple → navy), reversed logo
+============================================================ */
+.cta-band{
+  padding:96px 0;text-align:center;
+  background:linear-gradient(135deg,var(--p6) 0%,var(--n9) 100%);
+  position:relative;overflow:hidden;
+}
+/* Subtle circle texture — no blobs */
+.cta-band::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:40px 40px;pointer-events:none;
+}
+.cta-band-inner{position:relative;z-index:1}
+.cta-flow{
+  font-family:var(--fh);font-size:13px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);
+  margin-bottom:16px;
+}
+.cta-h2{
+  font-family:var(--fh);font-size:clamp(32px,5vw,52px);font-weight:700;
+  color:#fff;margin-bottom:16px;line-height:1.15;
+}
+.cta-sub{font-size:17px;color:rgba(255,255,255,.72);margin-bottom:40px;max-width:520px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-tg{
+  background:#fff;color:var(--n9);
+  padding:15px 32px;border-radius:var(--r-btn);
+  font-family:var(--fh);font-size:15px;font-weight:700;
+  display:inline-flex;align-items:center;gap:9px;
+  transition:all .25s;
+}
+.btn-tg:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.3)}
+.btn-tg-out{
+  border:2px solid rgba(255,255,255,.35);color:#fff;
+  padding:13px 28px;border-radius:var(--r-btn);
+  font-family:var(--fh);font-size:15px;font-weight:600;
+  display:inline-flex;align-items:center;gap:9px;
+  transition:all .2s;
+}
+.btn-tg-out:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+/* ============================================================
+   FOOTER — navy, reversed logo
+============================================================ */
+footer{
+  background:var(--n9);padding:56px 60px 36px;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.footer-top{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:48px;margin-bottom:48px;
+}
+.foot-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.75;margin-top:12px;max-width:220px}
+.foot-col h4{
+  font-family:var(--fh);font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px;
+}
+.foot-col li{margin-bottom:10px}
+.foot-col a{font-size:14px;color:rgba(255,255,255,.55);transition:color .2s}
+.foot-col a:hover{color:#fff}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  padding-top:28px;border-top:1px solid rgba(255,255,255,.07);
+  font-size:12px;color:rgba(255,255,255,.3);
+}
+.footer-bottom a{color:rgba(255,255,255,.4);transition:color .2s}
+.footer-bottom a:hover{color:#fff}
+.footer-tg{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  color:#fff;padding:9px 18px;border-radius:var(--r-btn);
+  font-size:13px;font-weight:600;transition:all .2s;
+}
+.footer-tg:hover{background:var(--p6);border-color:var(--p6)}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+============================================================ */
+@media(max-width:1024px){
+  .footer-top{grid-template-columns:1fr 1fr}
+  .pkg-grid{grid-template-columns:1fr}
+  .pkg.feat::after{display:none}
+}
+@media(max-width:900px){
+  header{padding:0 24px}
+  .hero{flex-direction:column;padding:84px 24px 48px;text-align:center}
+  .hero-left{max-width:100%;padding-right:0}
+  .hero-ctas,.reassurance{justify-content:center}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-right{margin-top:48px}
+  .phone-sm,.qr-card,.link-chip{display:none}
+  nav{display:none}
+  .ham{display:flex}
+  .steps{grid-template-columns:1fr}
+  .steps::before{display:none}
+  .occ-panel.active{grid-template-columns:1fr;text-align:center}
+  .occ-phone-wrap{order:-1}
+  .btn-sample{margin:0 auto}
+  .compare-wrap{grid-template-columns:1fr}
+  .bento-grid{grid-template-columns:1fr}
+  .b.w2,.b.h2{grid-column:auto;grid-row:auto}
+  .hiw-steps{padding:0 0}
+  .pkg-grid{grid-template-columns:1fr}
+  .occasions,.strip,.compare,.bento,.hiw,.pricing,.trust,.faq,.cta-band{padding-top:60px;padding-bottom:60px}
+  footer{padding:40px 24px 28px}
+  .footer-top{grid-template-columns:1fr;gap:28px}
+  .trust-sep{display:none}
+}
+  </style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- ════════════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════════════ -->
+<header>
+  <a href="/" class="logo" aria-label="Digital Metrya — home">
+    <!-- Reversed SVG logo for white background header -->
+    <svg class="logo-svg" width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <rect x="8" y="4" width="22" height="34" rx="4" stroke="#6D28D9" stroke-width="2.5"/>
+      <rect x="13" y="8" width="12" height="18" rx="2" fill="#EDE9FE"/>
+      <circle cx="19" cy="33" r="2.2" fill="#6D28D9"/>
+      <path d="M28 6 C40 1, 46 13, 36 19 L21 33 L17 37 L19 28 Z" fill="#6D28D9"/>
+      <path d="M19 28 L28 19" stroke="#A78BFA" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+    <div class="logo-copy">
+      <span class="logo-name">Digital Metrya</span>
+      <span class="logo-tag">Your Event. Our Digital Touch.</span>
+    </div>
+  </a>
+
+  <nav aria-label="Main navigation">
+    <a href="#occasions" class="nav-link">Occasions</a>
+    <a href="#hiw" class="nav-link">How it works</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+    <a href="https://t.me/digitalmetrya" target="_blank" rel="noopener" class="btn-nav">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+      Order yours
+    </a>
+  </nav>
+
+  <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false" aria-controls="mob-nav">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Mobile nav -->
+<div class="mob-nav" id="mob-nav" role="navigation" aria-label="Mobile navigation">
+  <a href="#occasions" class="mob-link" onclick="closeNav()">Occasions</a>
+  <a href="#hiw" class="mob-link" onclick="closeNav()">How it works</a>
+  <a href="#pricing" class="mob-link" onclick="closeNav()">Pricing</a>
+  <a href="#faq" class="mob-link" onclick="closeNav()">FAQ</a>
+  <a href="https://t.me/digitalmetrya" target="_blank" class="btn-mob-order" onclick="closeNav()">Order yours on Telegram →</a>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     HERO — 1. White + lavender shape, real artifacts
+════════════════════════════════════════════════════════ -->
+<section class="hero" id="home" aria-label="Hero">
+  <div class="hero-left fi">
+    <div class="chip" aria-label="Digital Invitations · Ethiopia">
+      <span class="chip-dot" aria-hidden="true"></span>
+      Digital Invitations · Ethiopia
+    </div>
+
+    <h1 class="h1">
+      Your event.<br/>
+      <span class="accent">Our digital touch.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Beautiful invitations for weddings, birthdays, graduations and more.
+      Shared with one simple link and QR code — no app needed.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="https://t.me/digitalmetrya" target="_blank" rel="noopener" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+        Order your invitation
+      </a>
+      <a href="/wedding" class="btn-ghost">
+        See live sample →
+      </a>
+    </div>
+
+    <div class="reassurance">
+      <span class="reassurance-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        No app needed
+      </span>
+      <span class="reassurance-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Works on every phone
+      </span>
+      <span class="reassurance-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Ready in 3–5 days
+      </span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="phone-wrap fi">
+      <!-- Main phone — wedding invite -->
+      <div class="phone" role="img" aria-label="Phone showing wedding invitation for Tamirat and Deborah">
+        <div class="phone-notch" aria-hidden="true"></div>
+        <div class="phone-screen">
+          <div class="inv-eyebrow">Wedding Invitation</div>
+          <div class="inv-names">
+            Tamirat<br/>
+            <span class="inv-amp">&amp;</span>
+            Deborah
+          </div>
+          <div class="inv-divider" aria-hidden="true"></div>
+          <div class="inv-date">December 28, 2026</div>
+          <div class="inv-loc">📍 Sheraton Addis, Ethiopia</div>
+          <div class="inv-cd" aria-label="Countdown timer">
+            <div class="cd-u"><div class="cd-n" id="p-days">037</div><div class="cd-l">Days</div></div>
+            <div class="cd-u"><div class="cd-n" id="p-hrs">14</div><div class="cd-l">Hrs</div></div>
+            <div class="cd-u"><div class="cd-n" id="p-min">22</div><div class="cd-l">Min</div></div>
+          </div>
+          <a href="/wedding" class="inv-rsvp">RSVP Now 💌</a>
+          <div class="inv-map">
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Tap for directions →
+          </div>
+        </div>
+      </div>
+
+      <!-- Second phone — birthday invite, slightly rotated -->
+      <div class="phone-sm" aria-hidden="true">
+        <div class="phone-screen-sm">
+          <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#E07B39;margin-bottom:8px;font-weight:700">🎂 Birthday Invite</div>
+          <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:#7C2D12;line-height:1.1">Sara's<br/>30th!</div>
+          <div style="font-size:8px;color:rgba(124,45,18,.55);margin-top:5px">January 15 · Addis Ababa</div>
+          <div style="margin-top:14px;background:#E07B39;color:#fff;border-radius:999px;padding:7px;font-size:10px;font-weight:700;display:inline-block">RSVP 🎉</div>
+        </div>
+      </div>
+
+      <!-- QR Card — floating -->
+      <div class="qr-card" aria-hidden="true">
+        <div class="qr-title">Scan to open</div>
+        <div class="qr-visual" id="qr-grid" role="img" aria-label="QR code"></div>
+        <div class="qr-link">digitalmetrya.com/<br/>tamirat-and-deborah</div>
+      </div>
+
+      <!-- Link chip -->
+      <div class="link-chip" aria-hidden="true">
+        <span class="link-chip-dot"></span>
+        digitalmetrya.com/selam-and-dawit
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     2. 3-STEP STRIP — white, horizontal
+════════════════════════════════════════════════════════ -->
+<section class="strip" id="hiw">
+  <div class="container text-center">
+    <h2 class="section-h2 strip-h2 fi">One link. One QR code. <em>Every guest.</em></h2>
+    <div class="steps">
+      <div class="step-item fi">
+        <div class="step-num">1</div>
+        <div class="step-title">We design your invitation</div>
+        <div class="step-desc">Tell us your event details and style preference. Our team crafts a custom-designed invitation page just for you.</div>
+      </div>
+      <div class="step-item fi">
+        <div class="step-num">2</div>
+        <div class="step-title">You get a link and QR code</div>
+        <div class="step-desc">We send you a branded short link and a print-ready QR code. Share instantly on Telegram, WhatsApp, or anywhere.</div>
+      </div>
+      <div class="step-item fi">
+        <div class="step-num">3</div>
+        <div class="step-title">Guests open it on any phone</div>
+        <div class="step-desc">No download, no account. Every guest taps the link and sees a stunning invitation — with map, RSVP, and countdown.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     3. OCCASIONS — lavender, tabs with large phone demo
+════════════════════════════════════════════════════════ -->
+<section class="occasions" id="occasions">
+  <div class="container text-center">
+    <div class="section-eyebrow fi">For every celebration</div>
+    <h2 class="section-h2 fi">For every celebration</h2>
+
+    <div class="tabs fi" role="tablist" aria-label="Occasions">
+      <div class="tab active" role="tab" aria-selected="true" tabindex="0" onclick="showOcc('wedding',this)">💍 Weddings</div>
+      <div class="tab" role="tab" aria-selected="false" tabindex="-1" onclick="showOcc('birthday',this)">🎂 Birthdays</div>
+      <div class="tab" role="tab" aria-selected="false" tabindex="-1" onclick="showOcc('graduation',this)">🎓 Graduations</div>
+      <div class="tab" role="tab" aria-selected="false" tabindex="-1" onclick="showOcc('baby',this)">👶 Baby Showers</div>
+      <div class="tab" role="tab" aria-selected="false" tabindex="-1" onclick="showOcc('book',this)">📖 Book Releases</div>
+      <div class="tab" role="tab" aria-selected="false" tabindex="-1" onclick="showOcc('custom',this)">✨ Anything</div>
+    </div>
+
+    <!-- Wedding panel -->
+    <div class="occ-panel active fi" id="occ-wedding" role="tabpanel">
+      <div class="occ-phone-wrap">
+        <div class="occ-ph">
+          <div class="occ-scr" style="background:linear-gradient(160deg,#FDF8F0,#EDE9FE)">
+            <div style="font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:#C9A84C;margin-bottom:12px;font-weight:700">Wedding Invitation</div>
+            <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;color:#24104F;line-height:1.1">Tamirat<br/><span style="font-size:14px;color:#A78BFA">&</span><br/>Deborah</div>
+            <div style="width:40px;height:1px;background:#C9A84C;margin:12px auto"></div>
+            <div style="font-size:9px;font-weight:600;letter-spacing:.1em;color:#24104F">DEC 28, 2026</div>
+            <div style="font-size:8px;color:rgba(36,16,79,.5);margin-top:3px">📍 Sheraton Addis</div>
+            <div style="margin:16px 0;background:#6D28D9;color:#fff;border-radius:999px;padding:9px;font-size:11px;font-weight:700">RSVP Now 💌</div>
+            <div style="background:#EDE9FE;border-radius:10px;height:60px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#6D28D9;font-weight:600;gap:5px">📍 Map & Directions →</div>
+          </div>
+        </div>
+      </div>
+      <div class="occ-info">
+        <h3 class="occ-title">Wedding Invitations</h3>
+        <p class="occ-desc">Love, joy, togetherness — with your story, schedule, map, and RSVP. We capture every detail of your special day in a beautiful invitation your guests will cherish.</p>
+        <a href="/wedding" class="btn-sample">Open live sample →</a>
+      </div>
+    </div>
+
+    <!-- Birthday panel -->
+    <div class="occ-panel fi" id="occ-birthday" role="tabpanel">
+      <div class="occ-phone-wrap">
+        <div class="occ-ph">
+          <div class="occ-scr" style="background:linear-gradient(160deg,#FFF8F0,#FDE7D3)">
+            <div style="font-size:32px;margin-bottom:10px">🎂</div>
+            <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;color:#7C2D12">Sara's 30th!</div>
+            <div style="font-size:9px;color:rgba(124,45,18,.6);margin-top:5px">January 15, 2027</div>
+            <div style="font-size:9px;color:rgba(124,45,18,.5)">📍 Skybar, Addis Ababa</div>
+            <div style="margin:16px 0;background:#E07B39;color:#fff;border-radius:999px;padding:9px;font-size:11px;font-weight:700">RSVP 🎉</div>
+          </div>
+        </div>
+      </div>
+      <div class="occ-info">
+        <h3 class="occ-title">Birthday Invitations</h3>
+        <p class="occ-desc">Celebration, happiness, fun — party details everyone can find. From sweet 16 to milestone 50s, we make every birthday feel extraordinary.</p>
+        <a href="https://t.me/digitalmetrya" target="_blank" class="btn-sample">Order yours →</a>
+      </div>
+    </div>
+
+    <!-- Graduation panel -->
+    <div class="occ-panel fi" id="occ-graduation" role="tabpanel">
+      <div class="occ-phone-wrap">
+        <div class="occ-ph">
+          <div class="occ-scr" style="background:linear-gradient(160deg,#F0F4FF,#E0E7FF)">
+            <div style="font-size:32px;margin-bottom:10px">🎓</div>
+            <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:#1E3A8A;line-height:1.2">Graduation<br/>Ceremony</div>
+            <div style="font-size:9px;color:rgba(30,58,138,.65);margin-top:8px">Yonas Tadesse</div>
+            <div style="font-size:9px;color:rgba(30,58,138,.45)">AAU · Class of 2026</div>
+            <div style="margin:16px 0;background:#1E3A8A;color:#fff;border-radius:999px;padding:9px;font-size:11px;font-weight:700">Join the celebration →</div>
+          </div>
+        </div>
+      </div>
+      <div class="occ-info">
+        <h3 class="occ-title">Graduation Invitations</h3>
+        <p class="occ-desc">Achievement, pride, future — share the day with those who helped you get here. A digital invitation that reflects the magnitude of your milestone.</p>
+        <a href="https://t.me/digitalmetrya" target="_blank" class="btn-sample">Order yours →</a>
+      </div>
+    </div>
+
+    <!-- Baby Shower panel -->
+    <div class="occ-panel fi" id="occ-baby" role="tabpanel">
+      <div class="occ-phone-wrap">
+        <div class="occ-ph">
+          <div class="occ-scr" style="background:linear-gradient(160deg,#F0FDF4,#DCFCE7)">
+            <div style="font-size:32px;margin-bottom:10px">👶</div>
+            <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;color:#14532D">Baby Shower</div>
+            <div style="font-size:9px;color:rgba(20,83,45,.6);margin-top:5px">for Meron &amp; Family</div>
+            <div style="margin:16px 0;background:#16A34A;color:#fff;border-radius:999px;padding:9px;font-size:11px;font-weight:700">RSVP 👶</div>
+          </div>
+        </div>
+      </div>
+      <div class="occ-info">
+        <h3 class="occ-title">Baby Shower Invitations</h3>
+        <p class="occ-desc">A gentle welcome for your little one, with all the details in one place. Warm, beautiful, and easy to share with family near and far.</p>
+        <a href="https://t.me/digitalmetrya" target="_blank" class="btn-sample">Order yours →</a>
+      </div>
+    </div>
+
+    <!-- Book Release panel -->
+    <div class="occ-panel fi" id="occ-book" role="tabpanel">
+      <div class="occ-phone-wrap">
+        <div class="occ-ph">
+          <div class="occ-scr" style="background:linear-gradient(160deg,#FAFAF9,#F5F5F4)">
+            <div style="font-size:32px;margin-bottom:10px">📖</div>
+            <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:#1C1917">Book Launch</div>
+            <div style="font-size:9px;font-style:italic;color:rgba(28,25,23,.5);margin-top:5px">"The Road Ahead"</div>
+            <div style="font-size:9px;color:rgba(28,25,23,.4)">by Almaz Kebede</div>
+            <div style="margin:16px 0;background:#1C1917;color:#fff;border-radius:999px;padding:9px;font-size:11px;font-weight:700">Reserve your seat →</div>
+          </div>
+        </div>
+      </div>
+      <div class="occ-info">
+        <h3 class="occ-title">Book Release Events</h3>
+        <p class="occ-desc">Launch your book with a page as thoughtful as your writing. Perfect for authors who want a professional, memorable launch invitation.</p>
+        <a href="https://t.me/digitalmetrya" target="_blank" class="btn-sample">Order yours →</a>
+      </div>
+    </div>
+
+    <!-- Custom panel -->
+    <div class="occ-panel fi" id="occ-custom" role="tabpanel">
+      <div class="occ-phone-wrap">
+        <div class="occ-ph">
+          <div class="occ-scr" style="background:linear-gradient(160deg,#EDE9FE,#F3E8FF)">
+            <div style="font-size:32px;margin-bottom:10px">✨</div>
+            <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;color:#24104F">Your Event</div>
+            <div style="font-size:9px;color:rgba(36,16,79,.5);margin-top:5px">Any occasion imaginable</div>
+            <div style="margin:16px 0;background:#6D28D9;color:#fff;border-radius:999px;padding:9px;font-size:11px;font-weight:700">Tell us about it →</div>
+          </div>
+        </div>
+      </div>
+      <div class="occ-info">
+        <h3 class="occ-title">Anything Else</h3>
+        <p class="occ-desc">Family gatherings, company events, anniversaries, engagements, house-warmings. If you're celebrating, we'll create something beautiful for it.</p>
+        <a href="https://t.me/digitalmetrya" target="_blank" class="btn-sample">Chat with us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     4. PAPER VS DIGITAL — white, split
+════════════════════════════════════════════════════════ -->
+<section class="compare" id="compare">
+  <div class="container text-center">
+    <div class="section-eyebrow fi">Paper vs Digital</div>
+    <h2 class="section-h2 fi">Paper is lovely. Links are faster.</h2>
+
+    <div class="compare-wrap">
+      <div class="cmp-col old">
+        <div class="cmp-head">📄 Printed Card</div>
+        <div class="cmp-body">
+          <div class="cmp-row"><span class="cmp-icon">❌</span>High printing and delivery cost</div>
+          <div class="cmp-row"><span class="cmp-icon">❌</span>Can't update once printed</div>
+          <div class="cmp-row"><span class="cmp-icon">❌</span>Easy to lose or leave at home</div>
+          <div class="cmp-row"><span class="cmp-icon">❌</span>No map or turn-by-turn directions</div>
+          <div class="cmp-row"><span class="cmp-icon">❌</span>No RSVP tracking</div>
+          <div class="cmp-row"><span class="cmp-icon">❌</span>Takes days to distribute</div>
+        </div>
+      </div>
+      <div class="cmp-col new">
+        <div class="cmp-head">✨ Digital Metrya</div>
+        <div class="cmp-body">
+          <div class="cmp-row"><span class="cmp-icon">✅</span>Shared instantly — free for guests</div>
+          <div class="cmp-row"><span class="cmp-icon">✅</span>Update details any time</div>
+          <div class="cmp-row"><span class="cmp-icon">✅</span>Always in every guest's pocket</div>
+          <div class="cmp-row"><span class="cmp-icon">✅</span>Map & turn-by-turn built in</div>
+          <div class="cmp-row"><span class="cmp-icon">✅</span>RSVP form built in</div>
+          <div class="cmp-row"><span class="cmp-icon">✅</span>QR code for your printed cards too</div>
+        </div>
+      </div>
+    </div>
+    <p class="compare-closing fi">Want both? <strong>We'll put your QR code on your printed card.</strong></p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     5. BENTO — "What's inside every invitation" — mixed sizes
+════════════════════════════════════════════════════════ -->
+<section class="bento" id="features">
+  <div class="container text-center">
+    <div class="section-eyebrow fi">What's inside</div>
+    <h2 class="section-h2 fi">What's inside every invitation</h2>
+
+    <div class="bento-grid">
+      <div class="b w2 fi">
+        <span class="b-icon">📅</span>
+        <div class="b-title">Date &amp; Countdown Timer</div>
+        <div class="b-desc">A live countdown the moment guests open the link. The excitement builds in real time — days, hours, minutes.</div>
+      </div>
+      <div class="b fi">
+        <span class="b-icon">📍</span>
+        <div class="b-title">Map &amp; Directions</div>
+        <div class="b-desc">One tap opens Google Maps. No one gets lost on your big day.</div>
+      </div>
+      <div class="b fi">
+        <span class="b-icon">📸</span>
+        <div class="b-title">Photo Gallery</div>
+        <div class="b-desc">Beautiful photo slideshow — up to 20 photos of the couple, family, or event.</div>
+      </div>
+      <div class="b fi">
+        <span class="b-icon">💌</span>
+        <div class="b-title">RSVP Form</div>
+        <div class="b-desc">Guests confirm attendance directly on the page. You see every response.</div>
+      </div>
+      <div class="b fi">
+        <span class="b-icon">📖</span>
+        <div class="b-title">Story &amp; Schedule</div>
+        <div class="b-desc">Your love story and the order of service, laid out beautifully.</div>
+      </div>
+      <div class="b fi">
+        <span class="b-icon">🎵</span>
+        <div class="b-title">Background Music</div>
+        <div class="b-desc">Your chosen song, playing softly as guests read your invitation.</div>
+      </div>
+      <div class="b fi">
+        <span class="b-icon">🔗</span>
+        <div class="b-title">Share Button</div>
+        <div class="b-desc">Guests re-share with one tap. Word spreads naturally through Telegram and WhatsApp.</div>
+      </div>
+      <div class="b fi">
+        <span class="b-icon">📲</span>
+        <div class="b-title">QR Code Included</div>
+        <div class="b-desc">Print-ready QR for venue screens and physical cards — PNG &amp; SVG.</div>
+      </div>
+      <div class="b fi">
+        <span class="b-icon">🇪🇹</span>
+        <div class="b-title">Amharic &amp; English</div>
+        <div class="b-desc">Ethiopian calendar support. Bilingual invitations for every generation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     6. HOW IT WORKS — lavender, timeline
+════════════════════════════════════════════════════════ -->
+<section class="hiw" id="hiw">
+  <div class="container text-center">
+    <div class="section-eyebrow fi">The process</div>
+    <h2 class="section-h2 fi">From idea to link in 4 steps</h2>
+
+    <div class="hiw-steps">
+      <div class="hiw-step fi">
+        <div class="hiw-num">1</div>
+        <div class="hiw-content">
+          <div class="hiw-title">Tell us about your event</div>
+          <div class="hiw-desc">Send us your event details on Telegram: names, date, time, venue, language, theme, photos — whatever you have. No forms, no fuss.</div>
+          <div class="hiw-tag">What we need: names · date · venue · photos (optional)</div>
+        </div>
+      </div>
+      <div class="hiw-step fi">
+        <div class="hiw-num">2</div>
+        <div class="hiw-content">
+          <div class="hiw-title">Pick a style or describe your own</div>
+          <div class="hiw-desc">Browse our sample designs or describe your vision. Elegant and minimal? Bold and colorful? Traditional Ethiopian? We adapt to you.</div>
+          <div class="hiw-tag">What you choose: style · colors · language</div>
+        </div>
+      </div>
+      <div class="hiw-step fi">
+        <div class="hiw-num">3</div>
+        <div class="hiw-content">
+          <div class="hiw-title">We design, you review</div>
+          <div class="hiw-desc">We build your invitation and send you a preview link. You review, give feedback, and we refine until you're happy. Revisions are included.</div>
+          <div class="hiw-tag">Timeline: 3–5 days · 1–2 revision rounds</div>
+        </div>
+      </div>
+      <div class="hiw-step fi">
+        <div class="hiw-num">4</div>
+        <div class="hiw-content">
+          <div class="hiw-title">Share your link and QR</div>
+          <div class="hiw-desc">We hand you a short branded link and a print-ready QR code. Share on WhatsApp, Telegram, Instagram Stories — your invitation reaches everyone in seconds.</div>
+          <div class="hiw-tag">What you get: link · QR PNG/SVG · share message</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     7. PRICING TEASER — white
+════════════════════════════════════════════════════════ -->
+<section class="pricing" id="pricing">
+  <div class="container text-center">
+    <div class="section-eyebrow fi">Transparent pricing</div>
+    <h2 class="section-h2 fi">Simple, honest pricing</h2>
+    <p class="section-sub fi" style="margin:0 auto 0">From a quick birthday invite to a fully bespoke wedding experience. All prices in ETB — no hidden fees.</p>
+
+    <div class="pkg-grid">
+      <!-- Simple -->
+      <div class="pkg fi">
+        <div class="pkg-tier">Package 01</div>
+        <div class="pkg-name">Simple</div>
+        <div class="pkg-price">From ETB 1,500</div>
+        <div class="pkg-for">Birthdays, small events</div>
+        <hr class="pkg-hr"/>
+        <div class="pkg-feats">
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>1-page custom invitation</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Event details + Google Map</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Short link + QR code (PNG &amp; SVG)</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Works on every phone, no app</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>1 revision round</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Delivered in 3 days</div>
+        </div>
+        <a href="https://t.me/digitalmetrya" target="_blank" class="pkg-btn">Order Simple →</a>
+      </div>
+
+      <!-- Signature (featured) -->
+      <div class="pkg feat fi">
+        <div class="pkg-tier">Package 02</div>
+        <div class="pkg-name">Signature</div>
+        <div class="pkg-price">From ETB 3,500</div>
+        <div class="pkg-for">Weddings, graduations</div>
+        <hr class="pkg-hr"/>
+        <div class="pkg-feats">
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Everything in Simple</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Cover · story · gallery · schedule</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Photo gallery (up to 20 photos)</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Live countdown timer</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>RSVP form with guest tracking</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Background music player</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>English &amp; Amharic option</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>2 revision rounds</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Delivered in 5 days</div>
+        </div>
+        <a href="https://t.me/digitalmetrya" target="_blank" class="pkg-btn">Order Signature →</a>
+      </div>
+
+      <!-- Custom -->
+      <div class="pkg fi">
+        <div class="pkg-tier">Package 03</div>
+        <div class="pkg-name">Custom</div>
+        <div class="pkg-price" style="font-size:24px;padding-top:4px">Contact us</div>
+        <div class="pkg-for">Any occasion, any scale</div>
+        <hr class="pkg-hr"/>
+        <div class="pkg-feats">
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Everything in Signature</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Fully custom multi-page design</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Guest list management</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Digital table seating plan</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Custom animations &amp; effects</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Printed QR cards (optional)</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>Unlimited revisions</div>
+          <div class="pkg-feat-row"><span class="feat-chk">✓</span>12-month hosting</div>
+        </div>
+        <a href="https://t.me/digitalmetrya" target="_blank" class="pkg-btn">Chat on Telegram →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     8. TRUST STRIP
+════════════════════════════════════════════════════════ -->
+<section class="trust">
+  <div class="container">
+    <div class="trust-inner fi">
+      <div class="trust-stat">
+        <div class="trust-num">3</div>
+        <div class="trust-label">Occasions covered</div>
+      </div>
+      <div class="trust-sep" aria-hidden="true"></div>
+      <div class="trust-stat">
+        <div class="trust-num">3–5</div>
+        <div class="trust-label">Days to delivery</div>
+      </div>
+      <div class="trust-sep" aria-hidden="true"></div>
+      <div class="trust-stat">
+        <div class="trust-num">0</div>
+        <div class="trust-label">Apps to install</div>
+      </div>
+      <div class="trust-sep" aria-hidden="true"></div>
+      <div class="trust-stat">
+        <div class="trust-num">EN + አማ</div>
+        <div class="trust-label">Languages</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     9. FAQ — lavender, accordion
+════════════════════════════════════════════════════════ -->
+<section class="faq" id="faq">
+  <div class="container text-center">
+    <div class="section-eyebrow fi">Common questions</div>
+    <h2 class="section-h2 fi">Got questions?</h2>
+
+    <div class="faq-list" role="list">
+      <div class="faq-item fi" role="listitem">
+        <div class="faq-q" onclick="toggleFAQ(this)" role="button" aria-expanded="false" tabindex="0">What is a digital invitation?<span class="faq-arr" aria-hidden="true">▾</span></div>
+        <div class="faq-a">A digital invitation is a beautiful web page designed specifically for your event. Guests open it by tapping a link or scanning a QR code — no app download needed. It includes event details, photos, map, countdown, and RSVP.</div>
+      </div>
+      <div class="faq-item fi" role="listitem">
+        <div class="faq-q" onclick="toggleFAQ(this)" role="button" aria-expanded="false" tabindex="0">Do my guests need to install anything?<span class="faq-arr" aria-hidden="true">▾</span></div>
+        <div class="faq-a">No. The invitation opens directly in any web browser on Android, iPhone, or any other phone. Just tap the link.</div>
+      </div>
+      <div class="faq-item fi" role="listitem">
+        <div class="faq-q" onclick="toggleFAQ(this)" role="button" aria-expanded="false" tabindex="0">How long does it take?<span class="faq-arr" aria-hidden="true">▾</span></div>
+        <div class="faq-a">Simple is ready in 3 days. Signature in 5 days. Rush delivery is available — ask us on Telegram and we'll do our best to accommodate.</div>
+      </div>
+      <div class="faq-item fi" role="listitem">
+        <div class="faq-q" onclick="toggleFAQ(this)" role="button" aria-expanded="false" tabindex="0">Can I update details after it goes live?<span class="faq-arr" aria-hidden="true">▾</span></div>
+        <div class="faq-a">Yes — that's one of the biggest advantages over printed cards. If your venue changes or timing shifts, we update the page and all existing links automatically show the new details.</div>
+      </div>
+      <div class="faq-item fi" role="listitem">
+        <div class="faq-q" onclick="toggleFAQ(this)" role="button" aria-expanded="false" tabindex="0">Can you do Amharic and Ethiopian calendar dates?<span class="faq-arr" aria-hidden="true">▾</span></div>
+        <div class="faq-a">Absolutely. We support bilingual English + Amharic invitations with the Ethiopian calendar date alongside the Gregorian date. Noto Sans Ethiopic is used for clean Ethiopic script.</div>
+      </div>
+      <div class="faq-item fi" role="listitem">
+        <div class="faq-q" onclick="toggleFAQ(this)" role="button" aria-expanded="false" tabindex="0">What about guests who don't use smartphones?<span class="faq-arr" aria-hidden="true">▾</span></div>
+        <div class="faq-a">We give you a print-ready QR code to put on a physical card — older relatives still receive a beautiful card, and the QR takes them to the full digital invitation. You can also share the link by SMS.</div>
+      </div>
+      <div class="faq-item fi" role="listitem">
+        <div class="faq-q" onclick="toggleFAQ(this)" role="button" aria-expanded="false" tabindex="0">How do I pay?<span class="faq-arr" aria-hidden="true">▾</span></div>
+        <div class="faq-a">We accept Telebirr, CBE Birr, and bank transfer. Payment details are shared once we confirm your order on Telegram. No payment is required upfront — we confirm all details first.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     10. FINAL CTA BAND — brand gradient, reversed logo
+════════════════════════════════════════════════════════ -->
+<section class="cta-band">
+  <div class="container cta-band-inner fi">
+    <div class="cta-flow">Ideas → Digital → Memories</div>
+    <h2 class="cta-h2">Tell us about your event.<br/>We'll take it from there.</h2>
+    <p class="cta-sub">No payment now. We confirm details first. Reply within 1 hour on Telegram.</p>
+    <div class="cta-btns">
+      <a href="https://t.me/digitalmetrya" target="_blank" rel="noopener" class="btn-tg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+        Chat on Telegram
+      </a>
+      <a href="/wedding" class="btn-tg-out">
+        See live wedding sample →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     FOOTER — navy, reversed logo, links
+════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="foot-brand">
+      <!-- Reversed (white) logo on dark footer -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+        <svg width="30" height="30" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect x="8" y="4" width="22" height="34" rx="4" stroke="#A78BFA" stroke-width="2.5"/>
+          <rect x="13" y="8" width="12" height="18" rx="2" fill="rgba(167,139,250,0.2)"/>
+          <circle cx="19" cy="33" r="2.2" fill="#A78BFA"/>
+          <path d="M28 6 C40 1, 46 13, 36 19 L21 33 L17 37 L19 28 Z" fill="#A78BFA"/>
+          <path d="M19 28 L28 19" stroke="#EDE9FE" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:#fff">Digital Metrya</div>
+      </div>
+      <div style="font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.05em;margin-bottom:12px">Your Event. Our Digital Touch.</div>
+      <p>Making event invitations simple, beautiful, and accessible — across Ethiopia and beyond.</p>
+      <a href="https://t.me/digitalmetrya" target="_blank" class="footer-tg" style="display:inline-flex;margin-top:16px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+        @digitalmetrya
+      </a>
+    </div>
+
+    <div class="foot-col">
+      <h4>Occasions</h4>
+      <ul>
+        <li><a href="#occasions">Weddings</a></li>
+        <li><a href="#occasions">Birthdays</a></li>
+        <li><a href="#occasions">Graduations</a></li>
+        <li><a href="#occasions">Baby Showers</a></li>
+        <li><a href="#occasions">Book Releases</a></li>
+        <li><a href="#occasions">Custom Events</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-col">
+      <h4>Service</h4>
+      <ul>
+        <li><a href="#hiw">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="/wedding">Sample Invitation</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://t.me/digitalmetrya" target="_blank">Telegram @digitalmetrya</a></li>
+        <li><a href="mailto:hello@digitalmetrya.com">hello@digitalmetrya.com</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Digital Metrya. All rights reserved.</span>
+    <span>
+      <a href="https://t.me/digitalmetrya" target="_blank">Telegram</a> ·
+      <a href="mailto:hello@digitalmetrya.com">Email</a> ·
+      <a href="/wedding">Sample</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+/* ── Scroll progress ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('prog').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+},{passive:true});
+
+/* ── Mobile nav ── */
+const ham=document.getElementById('ham'),mob=document.getElementById('mob-nav');
+function closeNav(){mob.classList.remove('open');ham.classList.remove('open');ham.setAttribute('aria-expanded','false')}
+ham.addEventListener('click',()=>{
+  const open=mob.classList.toggle('open');
+  ham.classList.toggle('open');
+  ham.setAttribute('aria-expanded',open);
+});
+
+/* ── Fade-in observer ── */
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('vis'),i*55);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+
+/* ── Occasion tabs ── */
+function showOcc(id,btn){
+  document.querySelectorAll('.occ-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false');t.setAttribute('tabindex','-1')});
+  document.getElementById('occ-'+id).classList.add('active');
+  btn.classList.add('active');btn.setAttribute('aria-selected','true');btn.setAttribute('tabindex','0');
+}
+
+/* ── FAQ accordion ── */
+function toggleFAQ(q){
+  const item=q.closest('.faq-item');
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(q=>q.setAttribute('aria-expanded','false'));
+  if(!open){item.classList.add('open');q.setAttribute('aria-expanded','true')}
+}
+/* Keyboard for FAQ */
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleFAQ(q)}});
+});
+
+/* ── Mini countdown on hero phone ── */
+(function(){
+  const wedding=new Date('2026-12-28T14:00:00+03:00').getTime();
+  function tick(){
+    const diff=wedding-Date.now();
+    if(diff<=0)return;
+    const d=Math.floor(diff/86400000);
+    const h=Math.floor((diff%86400000)/3600000);
+    const m=Math.floor((diff%3600000)/60000);
+    const dEl=document.getElementById('p-days');
+    const hEl=document.getElementById('p-hrs');
+    const mEl=document.getElementById('p-min');
+    if(dEl)dEl.textContent=String(d).padStart(3,'0');
+    if(hEl)hEl.textContent=String(h).padStart(2,'0');
+    if(mEl)mEl.textContent=String(m).padStart(2,'0');
+  }
+  tick();setInterval(tick,60000);
+})();
+
+/* ── Procedural QR grid (visual only — real QR on the actual invite) ── */
+(function(){
+  const g=document.getElementById('qr-grid');
+  if(!g)return;
+  const d=[1,1,1,0,1,0,1,1,0,1,1,0,0,1,0,0,1,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,1,1,0,0,0,1,0,1,0,0,0,1,1,0,0,1,0];
+  d.forEach(v=>{
+    const c=document.createElement('div');c.className='qr-cell';
+    c.style.background=v?'#24104F':'#EDE9FE';g.appendChild(c);
+  });
+})();
+
+/* ── Active nav link on scroll ── */
+const sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY+100;
+  sections.forEach(s=>{
+    const link=document.querySelector('.nav-link[href="#'+s.id+'"]');
+    if(!link)return;
+    link.classList.toggle('active',s.offsetTop<=y&&s.offsetTop+s.offsetHeight>y);
+  });
+},{passive:true});
+</script>
+</body>
+</html>
