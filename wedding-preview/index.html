@@ -961,6 +961,14 @@
       <div class="detail-value">December 28, 2026</div>
       <div class="detail-sub">Saturday · 2:00 PM (14:00 EAT)</div>
       <div class="detail-sub" style="margin-top:4px; font-family:var(--font-am); font-size:12px;">ታህሳስ ፳፩ ቀን ፳፻፲፱ ዓ.ም</div>
+      <div style="margin-top:14px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+of+Tamirat+%26+Deborah&dates=20261228T110000Z/20261228T200000Z&details=Celebration+of+Tamirat+and+Deborah+Wedding+at+Sheraton+Addis&location=Sheraton+Addis,+Addis+Ababa" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:var(--lavender-100);color:var(--purple-600);padding:5px 12px;border-radius:999px;font-size:11px;font-weight:600;">
+          📅 Google Cal
+        </a>
+        <button onclick="downloadICS()" style="display:inline-flex;align-items:center;gap:4px;background:var(--lavender-100);color:var(--purple-600);padding:5px 12px;border-radius:999px;font-size:11px;font-weight:600;cursor:pointer;">
+          📥 Apple / .ics
+        </button>
+      </div>
     </div>
     <div class="detail-card fade-in">
       <div class="detail-icon">
@@ -1329,6 +1337,11 @@
   </div>
 </footer>
 
+<!-- Floating Music Pill -->
+<div id="music-toggle-btn" onclick="toggleMusic()" style="position:fixed;bottom:24px;left:24px;z-index:900;background:var(--navy-900);color:var(--gold-light);padding:10px 18px;border-radius:999px;box-shadow:var(--shadow-elevated);cursor:pointer;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;border:1px solid rgba(201,168,76,0.3);transition:transform 0.2s;">
+  <span class="music-txt">Play Our Song 🎵</span>
+</div>
+
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
@@ -1436,6 +1449,78 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeLightbox();
   });
+  /* ---- Calendar ICS Download ---- */
+  function downloadICS() {
+    const icsContent = 
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Digital Metrya//Wedding Invitation//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+SUMMARY:Wedding of Tamirat & Deborah
+DESCRIPTION:You are warmly invited to celebrate the wedding of Tamirat and Deborah at Sheraton Addis.
+LOCATION:Sheraton Addis, Addis Ababa, Ethiopia
+DTSTART:20261228T110000Z
+DTEND:20261228T200000Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR`;
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.setAttribute('download', 'Tamirat_and_Deborah_Wedding.ics');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  /* ---- Ambient Music / Gentle Melody Synthesis (Offline-capable) ---- */
+  let audioCtx = null;
+  let isPlaying = false;
+  let timerId = null;
+
+  function toggleMusic() {
+    const btn = document.getElementById('music-toggle-btn');
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    isPlaying = !isPlaying;
+    if (isPlaying) {
+      btn.classList.add('playing');
+      btn.querySelector('.music-txt').textContent = 'Pause Song ⏸';
+      playMelody();
+    } else {
+      btn.classList.remove('playing');
+      btn.querySelector('.music-txt').textContent = 'Play Our Song 🎵';
+      if (timerId) clearTimeout(timerId);
+    }
+  }
+
+  function playMelody() {
+    if (!isPlaying || !audioCtx) return;
+    const notes = [261.63, 329.63, 392.00, 523.25, 440.00, 392.00, 329.63, 293.66, 329.63, 392.00];
+    let step = 0;
+    function playNext() {
+      if (!isPlaying) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(notes[step % notes.length], audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.08, audioCtx.currentTime + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 1.2);
+      step++;
+      timerId = setTimeout(playNext, 800);
+    }
+    playNext();
+  }
 </script>
 
 </body>
