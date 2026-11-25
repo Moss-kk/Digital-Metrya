@@ -31,10 +31,11 @@ const server = http.createServer((req, res) => {
 
   // Route map
   const routes = {
-    '/':              '/index.html',
-    '/wedding':       '/wedding-preview/index.html',
-    '/samples/wedding': '/wedding-preview/index.html',
-    '/digitalmetrya': '/wedding-preview/digitalmetrya.html',
+    '/':                '/index.html',
+    '/wedding':         '/wedding/index.html',
+    '/samples/wedding': '/wedding/index.html',
+    '/wedding-preview': '/wedding/index.html',
+    '/digitalmetrya':   '/index.html',
   };
 
   if (routes[urlPath]) urlPath = routes[urlPath];

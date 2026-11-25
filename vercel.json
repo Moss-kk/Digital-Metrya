@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/wedding", "destination": "/wedding/index.html" },
+    { "source": "/samples/wedding", "destination": "/wedding/index.html" },
+    { "source": "/wedding-preview", "destination": "/wedding/index.html" },
+    { "source": "/digitalmetrya", "destination": "/index.html" }
+  ]
+}

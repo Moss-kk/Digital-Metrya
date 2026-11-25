@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tamirat &amp; Deborah — Wedding Invitation</title>
+  <meta name="description" content="You are warmly invited to celebrate the wedding of Tamirat and Deborah. A beautiful digital invitation by Digital Metrya." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+Ethiopic:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — Digital Metrya Brand System v1
+    ============================================================ */
+    :root {
+      --purple-600: #6D28D9;
+      --purple-500: #7C3AED;
+      --purple-400: #A78BFA;
+      --lavender-100: #EDE9FE;
+      --lavender-50:  #F5F3FF;
+      --navy-900:     #24104F;
+      --white:        #FFFFFF;
+      --gold:         #C9A84C;
+      --gold-light:   #F0DFA0;
+      --ivory:        #FDF8F0;
+
+      --shadow-card: 0 8px 24px rgba(36,16,79,.08);
+      --shadow-elevated: 0 16px 40px rgba(36,16,79,.14);
+      --radius-card: 20px;
+      --radius-btn:  999px;
+
+      --font-head: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-script: 'Playfair Display', serif;
+      --font-am: 'Noto Sans Ethiopic', sans-serif;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--ivory);
+      color: var(--navy-900);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ============================================================
+       SCROLL PROGRESS
+    ============================================================ */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--purple-400));
+      z-index: 9999; transition: width .1s linear;
+    }
+
+    /* ============================================================
+       HEADER / NAV
+    ============================================================ */
+    header {
+      position: fixed; top: 3px; left: 0; right: 0; z-index: 100;
+      background: rgba(253,248,240,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,.2);
+      padding: 14px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-mark {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-head); font-weight: 700;
+      font-size: 15px; color: var(--navy-900);
+    }
+    .logo-icon {
+      width: 32px; height: 32px;
+    }
+    .logo-tagline { font-size: 10px; font-weight: 400; color: var(--purple-600); letter-spacing: .05em; }
+    .nav-links {
+      display: flex; align-items: center; gap: 24px;
+      list-style: none; font-size: 14px; font-weight: 500;
+    }
+    .nav-links a { color: var(--navy-900); transition: color .2s; }
+    .nav-links a:hover { color: var(--purple-600); }
+    .btn-nav {
+      background: var(--purple-600); color: var(--white);
+      padding: 9px 20px; border-radius: var(--radius-btn);
+      font-size: 14px; font-weight: 600; transition: all .2s;
+    }
+    .btn-nav:hover { background: var(--purple-400); color: var(--navy-900); transform: translateY(-1px); }
+    .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--navy-900); border-radius: 2px; transition: all .3s; }
+
+    /* ============================================================
+       HERO — Floral Wedding Invitation Style
+    ============================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 100px 32px 60px;
+      background: var(--ivory);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative corner flourishes */
+    .corner { position: absolute; width: 160px; height: 160px; opacity: .18; }
+    .corner-tl { top: 70px; left: 0; transform: rotate(0deg); }
+    .corner-tr { top: 70px; right: 0; transform: rotate(90deg); }
+    .corner-bl { bottom: 0; left: 0; transform: rotate(270deg); }
+    .corner-br { bottom: 0; right: 0; transform: rotate(180deg); }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 11px; font-weight: 600; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--gold);
+      border-bottom: 1px solid var(--gold-light);
+      padding-bottom: 6px; margin-bottom: 20px;
+    }
+    .hero-names {
+      font-family: var(--font-script);
+      font-size: clamp(52px, 10vw, 96px);
+      font-weight: 400; color: var(--navy-900);
+      line-height: 1.1; margin-bottom: 12px;
+    }
+    .hero-names em { color: var(--gold); font-style: italic; }
+    .hero-ampersand {
+      font-family: var(--font-script); font-size: clamp(40px, 7vw, 72px);
+      color: var(--purple-400); display: block; line-height: 1;
+    }
+    .hero-divider {
+      display: flex; align-items: center; gap: 16px;
+      margin: 24px auto; width: fit-content;
+    }
+    .hero-divider-line { width: 60px; height: 1px; background: var(--gold-light); }
+    .hero-divider-diamond { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); }
+    .hero-date {
+      font-family: var(--font-head); font-size: 15px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--navy-900);
+      margin-bottom: 6px;
+    }
+    .hero-location {
+      font-size: 14px; color: rgba(36,16,79,.6); margin-bottom: 36px;
+    }
+    .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--navy-900); color: var(--white);
+      padding: 14px 32px; border-radius: var(--radius-btn);
+      font-family: var(--font-head); font-size: 15px; font-weight: 600;
+      transition: all .25s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--purple-600); transform: translateY(-2px); box-shadow: var(--shadow-elevated); }
+    .btn-outline {
+      border: 2px solid var(--gold); color: var(--navy-900);
+      padding: 12px 28px; border-radius: var(--radius-btn);
+      font-family: var(--font-head); font-size: 15px; font-weight: 600;
+      transition: all .25s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--white); transform: translateY(-2px); }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      font-size: 11px; letter-spacing: .1em; color: rgba(36,16,79,.4); text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint svg { width: 20px; height: 20px; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(6px);} }
+
+    /* ============================================================
+       COUNTDOWN
+    ============================================================ */
+    .countdown-section {
+      background: var(--navy-900);
+      padding: 60px 32px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .countdown-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 10 L35 25 L50 25 L38 34 L43 50 L30 41 L17 50 L22 34 L10 25 L25 25 Z' fill='none' stroke='rgba(201,168,76,0.06)' stroke-width='1'/%3E%3C/svg%3E") repeat;
+      pointer-events: none;
+    }
+    .countdown-label {
+      font-family: var(--font-head); font-size: 11px; font-weight: 600;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 28px;
+    }
+    .countdown-grid {
+      display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+    .countdown-unit {
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .countdown-number {
+      font-family: var(--font-head); font-size: clamp(40px, 8vw, 72px); font-weight: 700;
+      color: var(--white); line-height: 1; min-width: 90px;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(201,168,76,.2);
+      border-radius: 16px; padding: 16px 12px;
+    }
+    .countdown-unit-label {
+      font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.5); margin-top: 8px;
+    }
+    .countdown-sep {
+      font-size: 48px; color: var(--gold); font-weight: 300;
+      align-self: center; margin-top: -16px; opacity: .6;
+    }
+
+    /* ============================================================
+       STORY / ABOUT SECTION
+    ============================================================ */
+    .story-section {
+      padding: 90px 32px;
+      background: var(--white);
+      position: relative;
+    }
+    .story-inner {
+      max-width: 800px; margin: 0 auto; text-align: center;
+    }
+    .section-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .section-h2 {
+      font-family: var(--font-script);
+      font-size: clamp(32px, 5vw, 52px); color: var(--navy-900);
+      margin-bottom: 24px; line-height: 1.2;
+    }
+    .story-body {
+      font-size: 16px; line-height: 1.8; color: rgba(36,16,79,.75);
+      max-width: 640px; margin: 0 auto 32px;
+    }
+    .story-quote {
+      font-family: var(--font-script); font-size: 22px; font-style: italic;
+      color: var(--purple-600); border-left: 3px solid var(--gold);
+      padding-left: 20px; text-align: left; max-width: 560px; margin: 32px auto;
+    }
+
+    /* Photo placeholders */
+    .photo-collage {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 200px 200px;
+      gap: 12px; margin: 48px 0;
+      max-width: 900px; margin-left: auto; margin-right: auto;
+    }
+    .photo-box {
+      border-radius: 16px; overflow: hidden;
+      background: var(--lavender-100);
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--purple-400); font-size: 13px;
+    }
+    .photo-box:nth-child(1) { grid-row: span 2; }
+    .photo-box:nth-child(4) { grid-column: span 2; }
+    .photo-placeholder-icon { opacity: .4; }
+
+    /* ============================================================
+       DETAILS — Date, Time, Venue
+    ============================================================ */
+    .details-section {
+      background: var(--lavender-50);
+      padding: 90px 32px;
+      position: relative; overflow: hidden;
+    }
+    .details-section::after {
+      content: ''; position: absolute; bottom: -60px; right: -60px;
+      width: 240px; height: 240px; border-radius: 50%;
+      background: var(--gold-light); opacity: .15;
+    }
+    .details-grid {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .detail-card {
+      background: var(--white);
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: var(--radius-card);
+      padding: 36px 28px; text-align: center;
+      box-shadow: var(--shadow-card);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .detail-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-elevated); }
+    .detail-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--lavender-100);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px; color: var(--purple-600);
+    }
+    .detail-label {
+      font-size: 11px; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .detail-value {
+      font-family: var(--font-head); font-size: 18px; font-weight: 700;
+      color: var(--navy-900); line-height: 1.3;
+    }
+    .detail-sub { font-size: 13px; color: rgba(36,16,79,.55); margin-top: 6px; }
+
+    /* ============================================================
+       SCHEDULE (Order of Service)
+    ============================================================ */
+    .schedule-section {
+      padding: 90px 32px;
+      background: var(--white);
+    }
+    .schedule-inner { max-width: 640px; margin: 0 auto; }
+    .schedule-title { text-align: center; margin-bottom: 48px; }
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: ''; position: absolute; left: 15px; top: 0; bottom: 0;
+      width: 1px; background: linear-gradient(to bottom, var(--gold-light), var(--lavender-100));
+    }
+    .timeline-item {
+      position: relative; margin-bottom: 36px;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity .4s, transform .4s;
+    }
+    .timeline-item.visible { opacity: 1; transform: translateY(0); }
+    .timeline-dot {
+      position: absolute; left: -31px; top: 4px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--gold); border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--gold-light);
+    }
+    .timeline-time {
+      font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      color: var(--purple-600); text-transform: uppercase; margin-bottom: 4px;
+    }
+    .timeline-event {
+      font-family: var(--font-head); font-size: 17px; font-weight: 600;
+      color: var(--navy-900); margin-bottom: 4px;
+    }
+    .timeline-desc { font-size: 14px; color: rgba(36,16,79,.6); line-height: 1.6; }
+
+    /* ============================================================
+       MAP SECTION
+    ============================================================ */
+    .map-section {
+      background: var(--navy-900);
+      padding: 80px 32px;
+    }
+    .map-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .map-text { color: var(--white); }
+    .map-text .section-eyebrow { color: var(--gold); }
+    .map-text .section-h2 { color: var(--white); }
+    .map-text p {
+      color: rgba(255,255,255,.65); font-size: 15px; line-height: 1.8; margin-bottom: 24px;
+    }
+    .venue-address {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(201,168,76,.2);
+      border-radius: 16px; padding: 20px 24px; margin-bottom: 24px;
+    }
+    .venue-address strong { color: var(--white); font-size: 16px; display: block; margin-bottom: 4px; }
+    .venue-address span { font-size: 14px; color: rgba(255,255,255,.55); }
+    .btn-map {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--navy-900);
+      padding: 12px 24px; border-radius: var(--radius-btn);
+      font-weight: 600; font-size: 14px; transition: all .25s;
+    }
+    .btn-map:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .map-frame {
+      border-radius: 20px; overflow: hidden;
+      height: 320px; background: rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(201,168,76,.2); position: relative;
+    }
+    .map-placeholder-text {
+      color: rgba(255,255,255,.4); font-size: 14px; text-align: center;
+    }
+
+    /* ============================================================
+       PACKAGES / INVITATION TIERS — from Wedding Packages AM PDF
+    ============================================================ */
+    .packages-section {
+      padding: 90px 32px;
+      background: var(--ivory);
+    }
+    .packages-intro { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+    .packages-grid {
+      max-width: 1060px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .pkg-card {
+      background: var(--white); border-radius: var(--radius-card);
+      border: 1px solid rgba(201,168,76,.2);
+      padding: 36px 28px;
+      box-shadow: var(--shadow-card);
+      display: flex; flex-direction: column;
+      transition: transform .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .pkg-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-elevated); }
+    .pkg-card.featured {
+      background: var(--navy-900);
+      border-color: var(--gold);
+    }
+    .pkg-card.featured::before {
+      content: 'Most Popular';
+      position: absolute; top: 20px; right: -28px;
+      background: var(--gold); color: var(--navy-900);
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      padding: 5px 36px; transform: rotate(45deg);
+      text-transform: uppercase;
+    }
+    .pkg-tier {
+      font-size: 11px; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+    }
+    .pkg-name {
+      font-family: var(--font-head); font-size: 24px; font-weight: 700;
+      color: var(--navy-900); margin-bottom: 8px;
+    }
+    .pkg-card.featured .pkg-name { color: var(--white); }
+    .pkg-price {
+      font-family: var(--font-head); font-size: 36px; font-weight: 700;
+      color: var(--purple-600); margin-bottom: 4px;
+    }
+    .pkg-card.featured .pkg-price { color: var(--gold); }
+    .pkg-price sup { font-size: 18px; vertical-align: super; }
+    .pkg-currency { font-size: 14px; color: rgba(36,16,79,.55); margin-bottom: 24px; }
+    .pkg-card.featured .pkg-currency { color: rgba(255,255,255,.5); }
+    .pkg-divider { border: none; border-top: 1px solid rgba(201,168,76,.2); margin: 20px 0; }
+    .pkg-features { list-style: none; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .pkg-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: rgba(36,16,79,.75); line-height: 1.5;
+    }
+    .pkg-card.featured .pkg-features li { color: rgba(255,255,255,.75); }
+    .pkg-check {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--lavender-100); color: var(--purple-600);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px; font-size: 10px;
+    }
+    .pkg-card.featured .pkg-check { background: rgba(201,168,76,.2); color: var(--gold); }
+    .pkg-cta {
+      display: block; text-align: center; margin-top: 28px;
+      background: var(--navy-900); color: var(--white);
+      padding: 13px; border-radius: var(--radius-btn);
+      font-family: var(--font-head); font-size: 15px; font-weight: 600;
+      transition: all .25s;
+    }
+    .pkg-card.featured .pkg-cta { background: var(--gold); color: var(--navy-900); }
+    .pkg-cta:hover { background: var(--purple-600); color: var(--white); transform: translateY(-1px); }
+    .pkg-card.featured .pkg-cta:hover { background: var(--gold-light); }
+
+    /* ============================================================
+       GALLERY PREVIEW
+    ============================================================ */
+    .gallery-section {
+      padding: 90px 32px;
+      background: var(--lavender-50);
+      text-align: center;
+    }
+    .gallery-grid {
+      max-width: 1000px; margin: 48px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 180px 180px;
+      gap: 12px;
+    }
+    .gallery-item {
+      border-radius: 14px; overflow: hidden;
+      background: var(--lavender-100);
+      position: relative; cursor: pointer;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .gallery-item:hover { transform: scale(1.02); box-shadow: var(--shadow-elevated); }
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .gallery-item:nth-child(5) { grid-column: span 2; }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: rgba(36,16,79,.5);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .25s;
+      color: var(--white); font-size: 28px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--purple-400); opacity: .5;
+    }
+
+    /* ============================================================
+       RSVP SECTION
+    ============================================================ */
+    .rsvp-section {
+      padding: 90px 32px;
+      background: var(--white);
+    }
+    .rsvp-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+    .rsvp-section .section-h2 { margin-bottom: 12px; }
+    .rsvp-section p { color: rgba(36,16,79,.65); margin-bottom: 36px; }
+    .rsvp-form { display: flex; flex-direction: column; gap: 16px; text-align: left; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label { font-size: 13px; font-weight: 600; color: var(--navy-900); }
+    .form-input, .form-select, .form-textarea {
+      border: 1.5px solid rgba(36,16,79,.15);
+      border-radius: 12px; padding: 13px 16px;
+      font-family: var(--font-body); font-size: 15px; color: var(--navy-900);
+      background: var(--white); transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--purple-600);
+      box-shadow: 0 0 0 3px rgba(109,40,217,.12);
+    }
+    .form-textarea { resize: vertical; min-height: 90px; }
+    .rsvp-radio-group { display: flex; gap: 12px; }
+    .radio-btn {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+      border: 1.5px solid rgba(36,16,79,.15); border-radius: 10px;
+      padding: 11px; cursor: pointer; transition: all .2s; font-size: 14px; font-weight: 500;
+    }
+    .radio-btn input { display: none; }
+    .radio-btn:has(input:checked), .radio-btn.checked {
+      border-color: var(--gold); background: rgba(201,168,76,.08); color: var(--navy-900);
+    }
+    .btn-submit {
+      background: var(--purple-600); color: var(--white);
+      border: none; border-radius: var(--radius-btn);
+      padding: 15px; font-family: var(--font-head); font-size: 16px; font-weight: 600;
+      cursor: pointer; transition: all .25s; width: 100%;
+    }
+    .btn-submit:hover { background: var(--navy-900); transform: translateY(-2px); box-shadow: var(--shadow-elevated); }
+    .rsvp-telegram {
+      margin-top: 20px; font-size: 14px; color: rgba(36,16,79,.55); text-align: center;
+    }
+    .rsvp-telegram a { color: var(--purple-600); font-weight: 600; }
+
+    /* ============================================================
+       LOVE STORY TIMELINE
+    ============================================================ */
+    .love-story-section {
+      padding: 90px 32px;
+      background: var(--navy-900);
+      position: relative; overflow: hidden;
+    }
+    .love-story-section::before {
+      content: ''; position: absolute; top: -100px; left: -100px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(109,40,217,.15) 0%, transparent 70%);
+    }
+    .love-story-title { text-align: center; color: var(--white); margin-bottom: 56px; position: relative; }
+    .love-story-title .section-eyebrow { color: var(--gold); }
+    .love-story-title .section-h2 { color: var(--white); }
+    .love-milestones {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      max-width: 800px; margin: 0 auto; position: relative; z-index: 1;
+    }
+    .milestone {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(201,168,76,.2);
+      border-radius: 16px; padding: 24px; transition: all .25s;
+    }
+    .milestone:hover { background: rgba(255,255,255,.1); transform: translateY(-3px); }
+    .milestone-year {
+      font-family: var(--font-head); font-size: 28px; font-weight: 700;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .milestone-title {
+      font-family: var(--font-head); font-size: 16px; font-weight: 600;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .milestone-desc { font-size: 14px; color: rgba(255,255,255,.55); line-height: 1.6; }
+
+    /* ============================================================
+       MUSIC / PLAYLIST SECTION
+    ============================================================ */
+    .music-section {
+      padding: 70px 32px;
+      background: var(--lavender-50);
+      text-align: center;
+    }
+    .music-inner { max-width: 540px; margin: 0 auto; }
+    .music-note {
+      font-size: 48px; margin-bottom: 16px; animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.1);} }
+    .music-title { font-family: var(--font-head); font-size: 22px; font-weight: 700; color: var(--navy-900); margin-bottom: 8px; }
+    .music-sub { font-size: 15px; color: rgba(36,16,79,.6); margin-bottom: 28px; }
+    .music-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--navy-900); color: var(--white);
+      padding: 12px 24px; border-radius: var(--radius-btn); font-size: 15px; font-weight: 600;
+    }
+
+    /* ============================================================
+       CLOSING CTA — GRADIENT BAND
+    ============================================================ */
+    .cta-band {
+      background: linear-gradient(135deg, var(--purple-600) 0%, var(--navy-900) 100%);
+      padding: 90px 32px; text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-band::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='30' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='2'/%3E%3C/svg%3E") repeat;
+    }
+    .cta-band-inner { position: relative; z-index: 1; }
+    .cta-band h2 {
+      font-family: var(--font-script); font-size: clamp(36px, 6vw, 60px);
+      color: var(--white); margin-bottom: 16px;
+    }
+    .cta-band p { font-size: 17px; color: rgba(255,255,255,.75); margin-bottom: 36px; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .cta-band-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-gold {
+      background: var(--gold); color: var(--navy-900);
+      padding: 14px 32px; border-radius: var(--radius-btn);
+      font-family: var(--font-head); font-size: 15px; font-weight: 700;
+      transition: all .25s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+    .btn-white-outline {
+      border: 2px solid rgba(255,255,255,.4); color: var(--white);
+      padding: 12px 28px; border-radius: var(--radius-btn);
+      font-family: var(--font-head); font-size: 15px; font-weight: 600;
+      transition: all .25s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-white-outline:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--navy-900);
+      border-top: 1px solid rgba(201,168,76,.15);
+      padding: 48px 32px 32px;
+    }
+    .footer-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center; gap: 24px;
+      text-align: center;
+    }
+    .footer-logo-text {
+      font-family: var(--font-head); font-weight: 700; font-size: 16px; color: var(--white);
+    }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,.45); }
+    .footer-links {
+      display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;
+      list-style: none; font-size: 13px;
+    }
+    .footer-links a { color: rgba(255,255,255,.5); transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-social a {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
+      color: var(--white); padding: 8px 16px; border-radius: var(--radius-btn);
+      font-size: 13px; font-weight: 500; transition: all .2s;
+    }
+    .footer-social a:hover { background: var(--purple-600); border-color: var(--purple-600); }
+    .footer-credit {
+      font-size: 12px; color: rgba(255,255,255,.3);
+    }
+    .footer-credit a { color: var(--purple-400); }
+    .footer-divider { width: 100%; border: none; border-top: 1px solid rgba(255,255,255,.07); }
+
+    /* ============================================================
+       FADE IN ANIMATIONS
+    ============================================================ */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in, .timeline-item { transition: none; opacity: 1; transform: none; }
+      .scroll-hint, .music-note { animation: none; }
+    }
+
+    /* ============================================================
+       AMHARIC SECTION
+    ============================================================ */
+    .amharic-band {
+      background: var(--ivory); padding: 48px 32px;
+      text-align: center; border-top: 1px solid rgba(201,168,76,.2);
+    }
+    .amharic-text {
+      font-family: var(--font-am); font-size: 20px; color: var(--navy-900);
+      line-height: 2; margin-bottom: 12px;
+    }
+    .amharic-sub { font-size: 13px; color: rgba(36,16,79,.5); font-family: var(--font-am); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 65px; left: 0; right: 0;
+        background: rgba(253,248,240,.97); backdrop-filter: blur(12px);
+        padding: 24px 32px 32px; gap: 20px; border-bottom: 1px solid rgba(201,168,76,.2);
+        z-index: 99;
+      }
+      .photo-collage { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .photo-box:nth-child(1) { grid-row: auto; grid-column: span 2; height: 220px; }
+      .photo-box:nth-child(4) { grid-column: auto; }
+      .details-grid { grid-template-columns: 1fr; }
+      .map-inner { grid-template-columns: 1fr; }
+      .packages-grid { grid-template-columns: 1fr; }
+      .love-milestones { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-item:nth-child(1) { grid-column: span 2; height: 200px; }
+      .gallery-item:nth-child(5) { grid-column: auto; }
+      .corner { width: 90px; height: 90px; }
+    }
+
+    /* ============================================================
+       LIGHTBOX
+    ============================================================ */
+    .lightbox {
+      position: fixed; inset: 0; background: rgba(0,0,0,.85);
+      z-index: 1000; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .3s;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox-content { max-width: 90vw; max-height: 85vh; border-radius: 16px; overflow: hidden; }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,.1);
+      border: none; color: white; width: 40px; height: 40px; border-radius: 50%;
+      cursor: pointer; font-size: 20px; transition: background .2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,.25); }
+  </style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header>
+  <a href="/" class="logo-mark" style="text-decoration:none; color:inherit;">
+    <img src="/public/brand/logo-horizontal.png" alt="Digital Metrya" style="height: 44px; width: auto; object-fit: contain;" />
+  </a>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#details">Details</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#rsvp" class="btn-nav">RSVP Now</a></li>
+  </ul>
+
+  <div class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" id="home">
+  <!-- Corner flourishes (SVG) -->
+  <svg class="corner corner-tl" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 160 Q0 0 160 0" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+    <path d="M20 160 Q20 20 160 20" stroke="#C9A84C" stroke-width="1" fill="none" opacity=".5"/>
+    <circle cx="8" cy="8" r="3" fill="#C9A84C"/>
+    <path d="M30 0 Q0 0 0 30" stroke="#C9A84C" stroke-width="1" fill="none" opacity=".4"/>
+    <!-- Floral element -->
+    <g transform="translate(30, 30)" opacity=".7">
+      <circle cx="0" cy="0" r="4" fill="#C9A84C" opacity=".4"/>
+      <path d="M0-10 Q5-5 0 0 Q-5-5 0-10 Z" fill="#C9A84C" opacity=".6"/>
+      <path d="M10 0 Q5 5 0 0 Q5-5 10 0 Z" fill="#C9A84C" opacity=".6"/>
+      <path d="M0 10 Q-5 5 0 0 Q5 5 0 10 Z" fill="#C9A84C" opacity=".6"/>
+      <path d="M-10 0 Q-5-5 0 0 Q-5 5-10 0 Z" fill="#C9A84C" opacity=".6"/>
+    </g>
+  </svg>
+  <svg class="corner corner-tr" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 160 Q0 0 160 0" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+    <path d="M20 160 Q20 20 160 20" stroke="#C9A84C" stroke-width="1" fill="none" opacity=".5"/>
+    <circle cx="8" cy="8" r="3" fill="#C9A84C"/>
+    <g transform="translate(30, 30)" opacity=".7">
+      <circle cx="0" cy="0" r="4" fill="#C9A84C" opacity=".4"/>
+      <path d="M0-10 Q5-5 0 0 Q-5-5 0-10 Z" fill="#C9A84C" opacity=".6"/>
+      <path d="M10 0 Q5 5 0 0 Q5-5 10 0 Z" fill="#C9A84C" opacity=".6"/>
+      <path d="M0 10 Q-5 5 0 0 Q5 5 0 10 Z" fill="#C9A84C" opacity=".6"/>
+      <path d="M-10 0 Q-5-5 0 0 Q-5 5-10 0 Z" fill="#C9A84C" opacity=".6"/>
+    </g>
+  </svg>
+  <svg class="corner corner-bl" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 160 Q0 0 160 0" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+    <circle cx="8" cy="8" r="3" fill="#C9A84C"/>
+  </svg>
+  <svg class="corner corner-br" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 160 Q0 0 160 0" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+    <circle cx="8" cy="8" r="3" fill="#C9A84C"/>
+  </svg>
+
+  <div class="hero-eyebrow">Wedding Invitation</div>
+
+  <div class="hero-names">
+    <em>Tamirat</em>
+    <span class="hero-ampersand">&amp;</span>
+    <em>Deborah</em>
+  </div>
+
+  <div class="hero-divider">
+    <div class="hero-divider-line"></div>
+    <div class="hero-divider-diamond"></div>
+    <div class="hero-divider-line"></div>
+  </div>
+
+  <div class="hero-date">Saturday · December 28, 2026</div>
+  <div class="hero-location">📍 Addis Ababa, Ethiopia</div>
+
+  <div class="hero-ctas">
+    <a href="#rsvp" class="btn-primary">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      RSVP Now
+    </a>
+    <a href="#details" class="btn-outline">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Event Details
+    </a>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     COUNTDOWN
+============================================================ -->
+<section class="countdown-section">
+  <div class="countdown-label">Counting down to our special day</div>
+  <div class="countdown-grid">
+    <div class="countdown-unit">
+      <div class="countdown-number" id="cd-days">000</div>
+      <div class="countdown-unit-label">Days</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-unit">
+      <div class="countdown-number" id="cd-hours">00</div>
+      <div class="countdown-unit-label">Hours</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-unit">
+      <div class="countdown-number" id="cd-mins">00</div>
+      <div class="countdown-unit-label">Minutes</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-unit">
+      <div class="countdown-number" id="cd-secs">00</div>
+      <div class="countdown-unit-label">Seconds</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     OUR STORY
+============================================================ -->
+<section class="story-section" id="story">
+  <div class="story-inner fade-in">
+    <div class="section-eyebrow">Our Story</div>
+    <h2 class="section-h2">A Love Written in Stars</h2>
+    <p class="story-body">
+      What began as a chance meeting in Addis Ababa grew into something neither of us could have imagined.
+      Tamirat and Deborah's journey is one of laughter, shared dreams, and unwavering devotion.
+      Through every season, through the highs and the quiet ordinary moments, our love only deepened.
+    </p>
+    <blockquote class="story-quote">
+      "Love is not about finding the perfect person, but seeing an imperfect person perfectly."
+    </blockquote>
+    <p class="story-body">
+      Today, we stand at the threshold of a new chapter — and we could not imagine beginning it without
+      the people who have shaped us, loved us, and walked with us. We invite you to witness our vows
+      and celebrate this beautiful union with us.
+    </p>
+  </div>
+
+  <!-- Photo Collage -->
+  <div class="photo-collage fade-in">
+    <div class="photo-box" style="height: 100%;">
+      <svg class="photo-placeholder-icon" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    </div>
+    <div class="photo-box" style="height: 190px;">
+      <svg class="photo-placeholder-icon" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    </div>
+    <div class="photo-box" style="height: 190px;">
+      <svg class="photo-placeholder-icon" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    </div>
+    <div class="photo-box" style="height: 190px;">
+      <svg class="photo-placeholder-icon" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    </div>
+    <div class="photo-box" style="height: 190px;">
+      <svg class="photo-placeholder-icon" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LOVE STORY MILESTONES
+============================================================ -->
+<section class="love-story-section">
+  <div class="love-story-title fade-in">
+    <div class="section-eyebrow">Our Journey</div>
+    <h2 class="section-h2">The Road to Forever</h2>
+  </div>
+  <div class="love-milestones">
+    <div class="milestone fade-in">
+      <div class="milestone-year">2021</div>
+      <div class="milestone-title">First Meeting</div>
+      <div class="milestone-desc">Two worlds collided in the heart of Addis Ababa. Neither knew that this moment would change everything.</div>
+    </div>
+    <div class="milestone fade-in">
+      <div class="milestone-year">2022</div>
+      <div class="milestone-title">First Date</div>
+      <div class="milestone-desc">Long walks, longer conversations. We talked until the city quieted. Love was already writing its story.</div>
+    </div>
+    <div class="milestone fade-in">
+      <div class="milestone-year">2024</div>
+      <div class="milestone-title">The Proposal</div>
+      <div class="milestone-desc">Under the stars, with trembling hands and a heart full of love — the question was asked, and answered with tears of joy.</div>
+    </div>
+    <div class="milestone fade-in">
+      <div class="milestone-year">2026</div>
+      <div class="milestone-title">Forever Begins</div>
+      <div class="milestone-desc">December 28th, 2026. The day we say "I do" in front of everyone we love. Our forever starts here.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DETAILS
+============================================================ -->
+<section class="details-section" id="details">
+  <div style="text-align:center; margin-bottom:48px;" class="fade-in">
+    <div class="section-eyebrow">When &amp; Where</div>
+    <h2 class="section-h2">Event Details</h2>
+  </div>
+  <div class="details-grid">
+    <div class="detail-card fade-in">
+      <div class="detail-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="detail-label">Date &amp; Time</div>
+      <div class="detail-value">December 28, 2026</div>
+      <div class="detail-sub">Saturday · 2:00 PM (14:00 EAT)</div>
+      <div class="detail-sub" style="margin-top:4px; font-family:var(--font-am); font-size:12px;">ታህሳስ ፳፩ ቀን ፳፻፲፱ ዓ.ም</div>
+      <div style="margin-top:14px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+of+Tamirat+%26+Deborah&dates=20261228T110000Z/20261228T200000Z&details=Celebration+of+Tamirat+and+Deborah+Wedding+at+Sheraton+Addis&location=Sheraton+Addis,+Addis+Ababa" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:var(--lavender-100);color:var(--purple-600);padding:5px 12px;border-radius:999px;font-size:11px;font-weight:600;">
+          📅 Google Cal
+        </a>
+        <button onclick="downloadICS()" style="display:inline-flex;align-items:center;gap:4px;background:var(--lavender-100);color:var(--purple-600);padding:5px 12px;border-radius:999px;font-size:11px;font-weight:600;cursor:pointer;">
+          📥 Apple / .ics
+        </button>
+      </div>
+    </div>
+    <div class="detail-card fade-in">
+      <div class="detail-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="detail-label">Venue</div>
+      <div class="detail-value">Sheraton Addis</div>
+      <div class="detail-sub">Grand Ballroom, Taitu St.</div>
+      <div class="detail-sub">Addis Ababa, Ethiopia</div>
+    </div>
+    <div class="detail-card fade-in">
+      <div class="detail-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <div class="detail-label">Dress Code</div>
+      <div class="detail-value">Formal Attire</div>
+      <div class="detail-sub">Colors: Ivory, Gold &amp; Deep Purple</div>
+      <div class="detail-sub">Traditional Ethiopian dress welcome</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ORDER OF SERVICE / SCHEDULE
+============================================================ -->
+<section class="schedule-section" id="schedule">
+  <div class="schedule-inner">
+    <div class="schedule-title fade-in">
+      <div class="section-eyebrow">Programme</div>
+      <h2 class="section-h2">Order of Service</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">1:00 PM</div>
+        <div class="timeline-event">Guest Arrival &amp; Reception</div>
+        <div class="timeline-desc">Welcome drinks and light refreshments. Photography begins.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">2:00 PM</div>
+        <div class="timeline-event">Wedding Ceremony</div>
+        <div class="timeline-desc">The formal exchange of vows and rings. Please be seated by 1:45 PM.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">3:00 PM</div>
+        <div class="timeline-event">ቅዱስ ቁርባን — Holy Communion</div>
+        <div class="timeline-desc">A sacred moment of blessing for the couple.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">4:00 PM</div>
+        <div class="timeline-event">Wedding Photography</div>
+        <div class="timeline-desc">Group and couple photos in the gardens. Cocktail hour begins.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">6:00 PM</div>
+        <div class="timeline-event">Reception &amp; Dinner</div>
+        <div class="timeline-desc">Grand ballroom opens. Traditional music, speeches, and a feast to remember.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">8:00 PM</div>
+        <div class="timeline-event">First Dance &amp; Celebration</div>
+        <div class="timeline-desc">Dancing, music, and an unforgettable evening with family and friends.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">11:00 PM</div>
+        <div class="timeline-event">Grand Farewell</div>
+        <div class="timeline-desc">Farewell to Tamirat &amp; Deborah as they begin their new journey together.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MAP / VENUE
+============================================================ -->
+<section class="map-section">
+  <div class="map-inner">
+    <div class="map-text fade-in">
+      <div class="section-eyebrow">Find Us</div>
+      <h2 class="section-h2">Getting There</h2>
+      <p>The Sheraton Addis is located in the heart of Addis Ababa, easily accessible from all major areas of the city. Ample parking is available on-site.</p>
+      <div class="venue-address">
+        <strong>Sheraton Addis — Grand Ballroom</strong>
+        <span>Taitu Street, Kebele 10, Kirkos Sub-city<br>Addis Ababa, Ethiopia</span>
+      </div>
+      <a href="https://maps.google.com/?q=Sheraton+Addis+Ababa" target="_blank" class="btn-map">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Open in Google Maps
+      </a>
+    </div>
+    <div class="map-frame fade-in">
+      <div class="map-placeholder-text">
+        <svg width="48" height="48" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" viewBox="0 0 24 24" style="margin:0 auto 12px;display:block;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div>Sheraton Addis</div>
+        <div style="font-size:12px;margin-top:4px;opacity:.6;">Addis Ababa, Ethiopia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PACKAGES SECTION (from Wedding Packages AM PDF)
+============================================================ -->
+<section class="packages-section" id="packages">
+  <div class="packages-intro fade-in">
+    <div class="section-eyebrow">Digital Invitation Packages</div>
+    <h2 class="section-h2" style="font-family:var(--font-head); font-size:clamp(28px,4vw,40px); font-weight:700; color:var(--navy-900);">This Beautiful Invitation Was Made Possible By</h2>
+    <p style="color:rgba(36,16,79,.65); font-size:15px; margin-top:12px;">
+      Digital Metrya crafts personalized digital invitations for every celebration.
+      Beautifully designed, shared with one link and a QR code.
+    </p>
+  </div>
+  <div class="packages-grid">
+    <!-- Simple Package -->
+    <div class="pkg-card fade-in">
+      <div class="pkg-tier">Package 01</div>
+      <div class="pkg-name">Simple</div>
+      <div class="pkg-price"><sup>ETB</sup>1,500</div>
+      <div class="pkg-currency">per invitation</div>
+      <hr class="pkg-divider"/>
+      <ul class="pkg-features">
+        <li><span class="pkg-check">✓</span> 1-page custom invitation design</li>
+        <li><span class="pkg-check">✓</span> Event details: date, time, venue</li>
+        <li><span class="pkg-check">✓</span> Google Maps integration</li>
+        <li><span class="pkg-check">✓</span> Short link (digitalmetrya.com/you)</li>
+        <li><span class="pkg-check">✓</span> QR code (PNG &amp; SVG)</li>
+        <li><span class="pkg-check">✓</span> Works on every phone</li>
+        <li><span class="pkg-check">✓</span> 1 revision round</li>
+        <li><span class="pkg-check">✓</span> Delivered in 3 days</li>
+      </ul>
+      <a href="https://t.me/digitalmetrya" target="_blank" class="pkg-cta">Order Simple →</a>
+    </div>
+
+    <!-- Signature Package (Featured) -->
+    <div class="pkg-card featured fade-in">
+      <div class="pkg-tier">Package 02</div>
+      <div class="pkg-name">Signature</div>
+      <div class="pkg-price"><sup>ETB</sup>3,500</div>
+      <div class="pkg-currency">per invitation</div>
+      <hr class="pkg-divider" style="border-color:rgba(201,168,76,.2);"/>
+      <ul class="pkg-features">
+        <li><span class="pkg-check">✓</span> Everything in Simple</li>
+        <li><span class="pkg-check">✓</span> Multi-section: cover, story, gallery</li>
+        <li><span class="pkg-check">✓</span> Photo gallery (up to 20 photos)</li>
+        <li><span class="pkg-check">✓</span> Love story / About the couple</li>
+        <li><span class="pkg-check">✓</span> Wedding countdown timer</li>
+        <li><span class="pkg-check">✓</span> RSVP form (guest responses)</li>
+        <li><span class="pkg-check">✓</span> Background music player</li>
+        <li><span class="pkg-check">✓</span> 2 revision rounds</li>
+        <li><span class="pkg-check">✓</span> English &amp; Amharic option</li>
+        <li><span class="pkg-check">✓</span> Delivered in 5 days</li>
+      </ul>
+      <a href="https://t.me/digitalmetrya" target="_blank" class="pkg-cta">Order Signature →</a>
+    </div>
+
+    <!-- Custom Package -->
+    <div class="pkg-card fade-in">
+      <div class="pkg-tier">Package 03</div>
+      <div class="pkg-name">Custom</div>
+      <div class="pkg-price" style="font-size:28px;">Contact Us</div>
+      <div class="pkg-currency">fully bespoke</div>
+      <hr class="pkg-divider"/>
+      <ul class="pkg-features">
+        <li><span class="pkg-check">✓</span> Everything in Signature</li>
+        <li><span class="pkg-check">✓</span> Fully custom multi-page design</li>
+        <li><span class="pkg-check">✓</span> Guest list management</li>
+        <li><span class="pkg-check">✓</span> Digital table seating</li>
+        <li><span class="pkg-check">✓</span> Custom animations &amp; effects</li>
+        <li><span class="pkg-check">✓</span> Printed QR cards (optional)</li>
+        <li><span class="pkg-check">✓</span> Priority support on Telegram</li>
+        <li><span class="pkg-check">✓</span> Unlimited revisions</li>
+        <li><span class="pkg-check">✓</span> Extended hosting (12 months)</li>
+      </ul>
+      <a href="https://t.me/digitalmetrya" target="_blank" class="pkg-cta">Chat on Telegram →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALLERY
+============================================================ -->
+<section class="gallery-section" id="gallery">
+  <div class="fade-in">
+    <div class="section-eyebrow">Memories</div>
+    <h2 class="section-h2" style="font-family:var(--font-script); font-size:clamp(32px,5vw,52px);">Our Photo Gallery</h2>
+    <p style="color:rgba(36,16,79,.6); font-size:15px; margin-top:8px;">A glimpse into our journey together</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="gallery-overlay">🔍</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="gallery-overlay">🔍</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="gallery-overlay">🔍</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="gallery-overlay">🔍</div>
+    </div>
+    <div class="gallery-item" style="height:180px;">
+      <div class="gallery-placeholder">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="gallery-overlay">🔍</div>
+    </div>
+    <div class="gallery-item" style="height:180px;">
+      <div class="gallery-placeholder">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="gallery-overlay">🔍</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MUSIC
+============================================================ -->
+<section class="music-section">
+  <div class="music-inner fade-in">
+    <div class="music-note">🎵</div>
+    <div class="music-title">Our Wedding Song</div>
+    <div class="music-sub">We will be dancing to this song at our reception. We hope it fills your heart with joy.</div>
+    <div class="music-pill">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      Our Wedding Playlist
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RSVP
+============================================================ -->
+<section class="rsvp-section" id="rsvp">
+  <div class="rsvp-inner">
+    <div class="fade-in">
+      <div class="section-eyebrow">Your Presence</div>
+      <h2 class="section-h2" style="font-family:var(--font-script); font-size:clamp(32px,5vw,48px);">Will You Join Us?</h2>
+      <p>Kindly let us know by <strong>December 15, 2026</strong> so we can prepare for your arrival.</p>
+    </div>
+    <form class="rsvp-form fade-in" onsubmit="handleRSVP(event)">
+      <div class="form-group">
+        <label class="form-label" for="guest-name">Full Name *</label>
+        <input class="form-input" type="text" id="guest-name" name="name" placeholder="Your full name" required />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="guest-phone">Phone / Telegram *</label>
+        <input class="form-input" type="tel" id="guest-phone" name="phone" placeholder="+251 9__ ___" required />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Will you attend? *</label>
+        <div class="rsvp-radio-group">
+          <label class="radio-btn" id="rb-yes">
+            <input type="radio" name="attendance" value="yes" required onchange="selectRadio('yes')" />
+            ✅ Joyfully accept
+          </label>
+          <label class="radio-btn" id="rb-no">
+            <input type="radio" name="attendance" value="no" onchange="selectRadio('no')" />
+            😔 Regretfully decline
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="guest-count">Number of guests attending</label>
+        <select class="form-select" id="guest-count" name="count">
+          <option value="1">Just me (1 guest)</option>
+          <option value="2">2 guests</option>
+          <option value="3">3 guests</option>
+          <option value="4">4 guests</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="guest-message">Message to Tamirat &amp; Deborah (optional)</label>
+        <textarea class="form-textarea" id="guest-message" name="message" placeholder="Share your wishes with us…"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Send My RSVP 💌</button>
+    </form>
+    <div class="rsvp-telegram">
+      Prefer to reply on Telegram?
+      <a href="https://t.me/digitalmetrya" target="_blank">Message us @digitalmetrya</a>
+    </div>
+
+    <!-- RSVP Success Message (hidden) -->
+    <div id="rsvp-success" style="display:none; text-align:center; padding:40px 20px;">
+      <div style="font-size:48px; margin-bottom:16px;">🎉</div>
+      <h3 style="font-family:var(--font-script); font-size:28px; color:var(--navy-900); margin-bottom:12px;">Thank You!</h3>
+      <p style="color:rgba(36,16,79,.65);">We have received your RSVP and can't wait to celebrate with you. See you on December 28th!</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AMHARIC SECTION
+============================================================ -->
+<section class="amharic-band">
+  <div class="amharic-text">
+    ወደ ታምራት እና ደቦራ የሠርግ ሥነ ሥርዓት <br/>
+    እናስቀድምዎ ለመሆን ደስ ብሎናል።
+  </div>
+  <div class="amharic-sub">ታህሳስ ፳፩ ቀን ፳፻፲፱ ዓ.ም | ሸራተን አዲስ፣ አዲስ አበባ</div>
+</section>
+
+<!-- ============================================================
+     CLOSING CTA BAND
+============================================================ -->
+<section class="cta-band">
+  <div class="cta-band-inner fade-in">
+    <h2>Ideas → Digital → Memories</h2>
+    <p>Want a beautiful digital invitation for your own event? Digital Metrya creates personalized invitations for weddings, birthdays, graduations, and more — shared with one link and QR code.</p>
+    <div class="cta-band-btns">
+      <a href="https://t.me/digitalmetrya" target="_blank" class="btn-gold">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+        Order Your Invitation
+      </a>
+      <a href="/" class="btn-white-outline">
+        See Live Samples
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img src="/public/brand/logo-horizontal.png" alt="Digital Metrya" style="height: 38px; width: auto; object-fit: contain; filter: brightness(0) invert(1); margin-bottom: 8px;" />
+      <div class="footer-tagline">Your Event. Our Digital Touch.</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/">digitalmetrya.com</a></li>
+      <li><a href="https://t.me/digitalmetrya" target="_blank">Telegram</a></li>
+      <li><a href="mailto:hello@digitalmetrya.com">Contact</a></li>
+    </ul>
+    <div class="footer-social">
+      <a href="https://t.me/digitalmetrya" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+        @digitalmetrya
+      </a>
+    </div>
+    <hr class="footer-divider"/>
+    <div class="footer-credit">
+      Designed with ♥ by <a href="https://t.me/digitalmetrya" target="_blank">Digital Metrya</a> ·
+      This invitation is for <strong style="color:rgba(255,255,255,.4);">Tamirat &amp; Deborah</strong> ·
+      © 2026 Digital Metrya. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Music Pill -->
+<div id="music-toggle-btn" onclick="toggleMusic()" style="position:fixed;bottom:24px;left:24px;z-index:900;background:var(--navy-900);color:var(--gold-light);padding:10px 18px;border-radius:999px;box-shadow:var(--shadow-elevated);cursor:pointer;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;border:1px solid rgba(201,168,76,0.3);transition:transform 0.2s;">
+  <span class="music-txt">Play Our Song 🎵</span>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-content" id="lightbox-content"></div>
+</div>
+
+<!-- ============================================================
+     SCRIPTS
+============================================================ -->
+<script>
+  /* ---- Scroll progress bar ---- */
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('progress-bar');
+    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    el.style.width = pct + '%';
+  });
+
+  /* ---- Mobile nav toggle ---- */
+  function toggleNav() {
+    document.getElementById('nav-links').classList.toggle('open');
+  }
+
+  /* ---- Countdown timer ---- */
+  (function countdown() {
+    const wedding = new Date('2026-12-28T14:00:00+03:00').getTime();
+    function tick() {
+      const now = Date.now();
+      const diff = wedding - now;
+      if (diff <= 0) {
+        document.querySelector('.countdown-section').innerHTML =
+          '<div style="text-align:center;color:var(--gold);font-size:28px;font-family:var(--font-head);font-weight:700;">🎉 Today is the Day! 🎉</div>';
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cd-days').textContent  = String(d).padStart(3, '0');
+      document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-mins').textContent  = String(m).padStart(2, '0');
+      document.getElementById('cd-secs').textContent  = String(s).padStart(2, '0');
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  /* ---- Intersection observer (fade-in + timeline) ---- */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in, .timeline-item').forEach(el => observer.observe(el));
+
+  /* ---- RSVP radio button visual ---- */
+  function selectRadio(val) {
+    document.getElementById('rb-yes').classList.toggle('checked', val === 'yes');
+    document.getElementById('rb-no').classList.toggle('checked', val === 'no');
+  }
+
+  /* ---- RSVP submit ---- */
+  function handleRSVP(e) {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const attendance = form.attendance.value;
+    const count = form['count'].value;
+    const message = form.message.value;
+
+    // Build Telegram message
+    const attending = attendance === 'yes' ? '✅ Attending' : '😔 Not attending';
+    const tgText = encodeURIComponent(
+      `🎊 RSVP — Tamirat & Deborah's Wedding\n\n` +
+      `👤 Name: ${name}\n` +
+      `${attending}\n` +
+      `👥 Guests: ${count}\n` +
+      (message ? `💬 Message: ${message}` : '')
+    );
+
+    // Show success state
+    form.style.display = 'none';
+    document.getElementById('rsvp-success').style.display = 'block';
+
+    // Open Telegram with pre-filled message after short delay
+    setTimeout(() => {
+      window.open(`https://t.me/digitalmetrya?text=${tgText}`, '_blank');
+    }, 1000);
+  }
+
+  /* ---- Lightbox ---- */
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.getElementById('lightbox').classList.add('open');
+    });
+  });
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+  /* ---- Calendar ICS Download ---- */
+  function downloadICS() {
+    const icsContent = 
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Digital Metrya//Wedding Invitation//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+SUMMARY:Wedding of Tamirat & Deborah
+DESCRIPTION:You are warmly invited to celebrate the wedding of Tamirat and Deborah at Sheraton Addis.
+LOCATION:Sheraton Addis, Addis Ababa, Ethiopia
+DTSTART:20261228T110000Z
+DTEND:20261228T200000Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR`;
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.setAttribute('download', 'Tamirat_and_Deborah_Wedding.ics');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  /* ---- Ambient Music / Gentle Melody Synthesis (Offline-capable) ---- */
+  let audioCtx = null;
+  let isPlaying = false;
+  let timerId = null;
+
+  function toggleMusic() {
+    const btn = document.getElementById('music-toggle-btn');
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    isPlaying = !isPlaying;
+    if (isPlaying) {
+      btn.classList.add('playing');
+      btn.querySelector('.music-txt').textContent = 'Pause Song ⏸';
+      playMelody();
+    } else {
+      btn.classList.remove('playing');
+      btn.querySelector('.music-txt').textContent = 'Play Our Song 🎵';
+      if (timerId) clearTimeout(timerId);
+    }
+  }
+
+  function playMelody() {
+    if (!isPlaying || !audioCtx) return;
+    const notes = [261.63, 329.63, 392.00, 523.25, 440.00, 392.00, 329.63, 293.66, 329.63, 392.00];
+    let step = 0;
+    function playNext() {
+      if (!isPlaying) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(notes[step % notes.length], audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.08, audioCtx.currentTime + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 1.2);
+      step++;
+      timerId = setTimeout(playNext, 800);
+    }
+    playNext();
+  }
+</script>
+
+</body>
+</html>
